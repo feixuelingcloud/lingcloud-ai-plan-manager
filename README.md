@@ -119,7 +119,7 @@
          "path": "/path/to/lingcloud-ai-plan-manager",
          "config": {
            "apiKey": "YOUR_API_KEY",
-           "apiBaseUrl": "https://your-backend-api.com/api"
+           "apiBaseUrl": "https://plan.lingcloudai.com/api"
          }
        }
      ]
@@ -151,10 +151,6 @@
 请配置 lingcloud-ai-plan-manager 插件的 API Key: YOUR_API_KEY_HERE
 ```
 
-或者：
-
-```
-设置计划管理插件的 API 地址为: https://your-api.com/api
 ```
 
 OpenClaw 会自动帮你更新配置！
@@ -398,8 +394,8 @@ DEBUG=true npm run dev
 ## 📞 联系方式
 
 - **作者**: Lingyun
-- **Email**: your-email@example.com
-- **GitHub**: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
+- **Email**: yemihu@lingcloud.ai
+- **GitHub**: [@feixuelingcloud](https://github.com/YOUR_USERNAME)
 
 ---
 
