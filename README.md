@@ -59,7 +59,7 @@
 或者：
 
 ```
-从 GitHub 安装插件: https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager
+从 GitHub 安装插件: https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
 ```
 
 或者：
