@@ -165,7 +165,7 @@ OpenClaw 会自动帮你更新配置！
       "name": "lingcloud-ai-plan-manager",
       "config": {
         "apiKey": "YOUR_API_KEY",
-        "apiBaseUrl": "https://your-backend-api.com/api"
+        "apiBaseUrl": "https://plan.lingcloudai.com/api"
       }
     }
   ]
