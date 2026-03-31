@@ -1,0 +1,158 @@
+{
+  "name": "lingcloud-ai-plan-manager",
+  "displayName": "LingCloud AI Plan Manager",
+  "version": "1.0.0",
+  "description": "A powerful OpenClaw plugin for intelligent plan and task management with AI assistance",
+  "author": {
+    "name": "Lingyun",
+    "email": "your-email@example.com",
+    "url": "https://github.com/YOUR_USERNAME"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager#readme",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/issues"
+  },
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "plan-manager",
+    "task-management",
+    "ai",
+    "ai-assistant",
+    "productivity",
+    "project-management"
+  ],
+  "category": "productivity",
+  "tags": [
+    "planning",
+    "tasks",
+    "productivity",
+    "ai",
+    "management"
+  ],
+  "icon": "https://raw.githubusercontent.com/YOUR_USERNAME/lingcloud-ai-plan-manager/main/assets/icon.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/YOUR_USERNAME/lingcloud-ai-plan-manager/main/assets/screenshot-1.png",
+    "https://raw.githubusercontent.com/YOUR_USERNAME/lingcloud-ai-plan-manager/main/assets/screenshot-2.png"
+  ],
+  "engines": {
+    "node": ">=18",
+    "openclaw": ">=1.0.0"
+  },
+  "openclaw": {
+    "minVersion": "1.0.0",
+    "extensions": ["./dist/index.js"],
+    "permissions": [
+      "network",
+      "storage"
+    ]
+  },
+  "config": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "apiKey": {
+          "type": "string",
+          "title": "API Key",
+          "description": "Your AI Plan Manager API Key",
+          "required": true
+        },
+        "apiBaseUrl": {
+          "type": "string",
+          "title": "API Base URL",
+          "description": "The base URL of your AI Plan Manager API",
+          "default": "https://your-backend-api.com/api",
+          "required": true
+        }
+      }
+    }
+  },
+  "features": [
+    {
+      "title": "Plan Management",
+      "description": "Create, update, and manage plans with AI assistance"
+    },
+    {
+      "title": "Task Tracking",
+      "description": "Track task status and progress in real-time"
+    },
+    {
+      "title": "Execution Reports",
+      "description": "Generate comprehensive execution reports with insights"
+    },
+    {
+      "title": "Smart Reminders",
+      "description": "Get intelligent reminders for overdue and blocked tasks"
+    },
+    {
+      "title": "Time Range Filtering",
+      "description": "Filter plans by week, last week, month, or all time"
+    }
+  ],
+  "tools": [
+    {
+      "name": "create_plan_draft",
+      "description": "Create plan drafts with AI assistance"
+    },
+    {
+      "name": "confirm_plan",
+      "description": "Confirm and save plans"
+    },
+    {
+      "name": "update_plan",
+      "description": "Modify plan information"
+    },
+    {
+      "name": "list_plans",
+      "description": "List plans with filters"
+    },
+    {
+      "name": "get_plan_detail",
+      "description": "Get detailed plan information"
+    },
+    {
+      "name": "update_task_status",
+      "description": "Update task status"
+    },
+    {
+      "name": "generate_execution_report",
+      "description": "Generate execution reports"
+    },
+    {
+      "name": "get_plan_reminders",
+      "description": "Get plan reminders"
+    },
+    {
+      "name": "get_today_focus",
+      "description": "Get today's focus tasks"
+    }
+  ],
+  "installation": {
+    "method": "git",
+    "steps": [
+      "Clone the repository",
+      "Install dependencies with npm install",
+      "Build the plugin with npm run build",
+      "Configure API key in OpenClaw",
+      "Restart OpenClaw"
+    ]
+  },
+  "documentation": {
+    "readme": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/blob/main/README.md",
+    "installation": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/blob/main/INSTALLATION.md",
+    "changelog": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/blob/main/CHANGELOG.md"
+  },
+  "support": {
+    "email": "your-email@example.com",
+    "url": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/issues"
+  },
+  "pricing": "free",
+  "verified": false,
+  "downloads": 0,
+  "rating": 0
+}

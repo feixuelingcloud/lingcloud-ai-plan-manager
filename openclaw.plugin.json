@@ -1,0 +1,27 @@
+{
+  "id": "@lingyun/ai-plan-manager",
+  "name": "AI Plan Manager",
+  "version": "1.0.0",
+  "description": "AI计划管理系统 OpenClaw 插件",
+  "type": "module",
+  "openclaw": {
+    "extensions": ["./dist/index.js"]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "apiKey": {
+        "type": "string",
+        "default": ""
+      }
+    }
+  },
+  "uiHints": {
+    "apiKey": {
+      "label": "API Key",
+      "placeholder": "请输入 AI 计划管理系统的 API Key",
+      "sensitive": true
+    }
+  }
+}

@@ -1,0 +1,34 @@
+# 源代码（只保留编译后的 dist/）
+/src/
+/index.ts
+/tsconfig.json
+
+# 开发文件
+node_modules/
+*.log
+.env
+.env.example
+
+# 文档（不需要打包给用户）
+macOS安装指南.md
+macOS快速安装.md
+用户安装说明.md
+分发说明.md
+快速安装卡片.md
+快速安装指南.md
+安装测试指南.md
+测试检查清单.md
+发布检查清单.md
+打包发布.bat
+打包发布.sh
+install.bat
+install.sh
+
+# Git 文件
+.git
+.gitignore
+
+# 其他
+*.tgz
+*.baiduyun.uploading.cfg
+测试创建计划.md
