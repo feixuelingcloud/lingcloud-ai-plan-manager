@@ -5,17 +5,17 @@
   "description": "A powerful OpenClaw plugin for intelligent plan and task management with AI assistance",
   "author": {
     "name": "Lingyun",
-    "email": "your-email@example.com",
-    "url": "https://github.com/YOUR_USERNAME"
+    "email": "yemihu@lingcloud.ai",
+    "url": "https://github.com/feixuelingcloud"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager.git"
+    "url": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager#readme",
+  "homepage": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager#readme",
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/issues"
+    "url": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues"
   },
   "keywords": [
     "openclaw",
@@ -35,10 +35,10 @@
     "ai",
     "management"
   ],
-  "icon": "https://raw.githubusercontent.com/YOUR_USERNAME/lingcloud-ai-plan-manager/main/assets/icon.png",
+  "icon": "https://raw.githubusercontent.com/feixuelingcloud/lingcloud-ai-plan-manager/main/assets/icon.png",
   "screenshots": [
-    "https://raw.githubusercontent.com/YOUR_USERNAME/lingcloud-ai-plan-manager/main/assets/screenshot-1.png",
-    "https://raw.githubusercontent.com/YOUR_USERNAME/lingcloud-ai-plan-manager/main/assets/screenshot-2.png"
+    "https://raw.githubusercontent.com/feixuelingcloud/lingcloud-ai-plan-manager/main/assets/screenshot-1.png",
+    "https://raw.githubusercontent.com/feixuelingcloud/lingcloud-ai-plan-manager/main/assets/screenshot-2.png"
   ],
   "engines": {
     "node": ">=18",
@@ -143,13 +143,13 @@
     ]
   },
   "documentation": {
-    "readme": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/blob/main/README.md",
-    "installation": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/blob/main/INSTALLATION.md",
-    "changelog": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/blob/main/CHANGELOG.md"
+    "readme": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/blob/main/README.md",
+    "installation": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/blob/main/INSTALLATION.md",
+    "changelog": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/blob/main/CHANGELOG.md"
   },
   "support": {
-    "email": "your-email@example.com",
-    "url": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/issues"
+    "email": "yemihu@lingcloud.ai",
+    "url": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues"
   },
   "pricing": "free",
   "verified": false,
