@@ -44,3 +44,19 @@ Thumbs.db
 
 # Debug
 .openclaw-debug/
+
+# Publishing related files (internal only)
+分发说明.md
+发布完整指南.md
+发布检查清单.md
+安装测试指南.md
+快速发布卡片.md
+快速安装卡片.md
+快速安装指南.md
+打包发布.bat
+打包发布.sh
+测试创建计划.md
+测试检查清单.md
+用户安装说明.md
+📦发布文件清单.md
+PUBLISH_GUIDE.md
