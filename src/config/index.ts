@@ -12,7 +12,7 @@ export interface PluginConfig {
 // 全局配置对象
 export let CONFIG: PluginConfig = {
   // 固定的后端服务器地址
-  apiBase: 'http://10.111.222.1:4000/api',
+  apiBase: 'https://plan.lingcloudai.com/api',
   // API Key 由用户通过 OpenClaw 设置
   apiKey: '',
   timeout: 15000
