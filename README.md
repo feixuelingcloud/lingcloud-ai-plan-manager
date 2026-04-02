@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Plugin-orange.svg)](https://openclaw.ai)
 
@@ -89,7 +89,7 @@
 
 1. **克隆仓库**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager.git
+   git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
    cd lingcloud-ai-plan-manager
    ```
 
@@ -374,7 +374,7 @@ DEBUG=true npm run dev
 
 ### 报告问题
 
-如果你发现了 bug 或有功能建议，请在 [GitHub Issues](https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/issues) 中提交。
+如果你发现了 bug 或有功能建议，请在 [GitHub Issues](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues) 中提交。
 
 ---
 
@@ -395,7 +395,7 @@ DEBUG=true npm run dev
 
 - **作者**: Lingyun
 - **Email**: yemihu@lingcloud.ai
-- **GitHub**: [@feixuelingcloud](https://github.com/YOUR_USERNAME)
+- **GitHub**: [@feixuelingcloud](https://github.com/feixuelingcloud)
 
 ---
 
@@ -436,7 +436,7 @@ npm run build
 
 如果这个项目对你有帮助，请给我们一个 ⭐️ Star！
 
-[![Star History Chart](https://api.star-history.com/svg?repos=YOUR_USERNAME/lingcloud-ai-plan-manager&type=Date)](https://star-history.com/#YOUR_USERNAME/lingcloud-ai-plan-manager&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=feixuelingcloud/lingcloud-ai-plan-manager&type=Date)](https://star-history.com/#feixuelingcloud/lingcloud-ai-plan-manager&Date)
 
 ---
 
