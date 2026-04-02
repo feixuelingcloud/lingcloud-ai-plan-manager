@@ -78,4 +78,4 @@ npm run build
 
 ---
 
-For more details, visit the [GitHub repository](https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager).
+For more details, visit the [GitHub repository](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager).

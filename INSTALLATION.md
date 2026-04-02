@@ -46,7 +46,7 @@
 或者：
 
 ```
-从 GitHub 安装插件: https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager
+从 GitHub 安装插件: https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
 ```
 
 或者简单地说：
@@ -76,7 +76,7 @@
 **步骤 1**: 克隆仓库
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager.git
+git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
 cd lingcloud-ai-plan-manager
 ```
 
@@ -327,7 +327,7 @@ npm install
    - 插件控制台输出
 
 2. **提交 Issue**:
-   - 访问 [GitHub Issues](https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/issues)
+   - 访问 [GitHub Issues](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues)
    - 提供详细的错误信息和环境信息
 
 3. **联系支持**:
@@ -377,7 +377,7 @@ Please install lingcloud-ai-plan-manager plugin
 Or:
 
 ```
-Install plugin from GitHub: https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager
+Install plugin from GitHub: https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
 ```
 
 Or simply:
@@ -407,7 +407,7 @@ For more control or custom configurations.
 **Step 1**: Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager.git
+git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
 cd lingcloud-ai-plan-manager
 ```
 
@@ -658,7 +658,7 @@ If none of the above solutions work:
    - Plugin console output
 
 2. **Submit an Issue**:
-   - Visit [GitHub Issues](https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/issues)
+   - Visit [GitHub Issues](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues)
    - Provide detailed error messages and environment info
 
 3. **Contact Support**:

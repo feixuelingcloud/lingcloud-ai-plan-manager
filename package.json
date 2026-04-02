@@ -5,7 +5,13 @@
   "type": "module",
   "main": "dist/index.js",
   "openclaw": {
-    "extensions": ["./dist/index.js"]
+    "extensions": ["./dist/index.js"],
+    "compat": {
+      "pluginApi": "1.0.0"
+    },
+    "build": {
+      "openclawVersion": "1.0.0"
+    }
   },
   "scripts": {
     "build": "tsc",
@@ -18,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager.git"
+    "url": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager/issues"
+    "url": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/lingcloud-ai-plan-manager#readme",
+  "homepage": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager#readme",
   "dependencies": {
     "@sinclair/typebox": "^0.34.28"
   },
@@ -42,6 +48,10 @@
     "productivity",
     "project-management"
   ],
-  "author": "Lingyun <your-email@example.com>",
+  "author": {
+    "name": "Lingyun",
+    "email": "yemihu@lingcloud.ai"
+  },
+  "publisher": "feixuelingcloud",
   "license": "MIT"
 }

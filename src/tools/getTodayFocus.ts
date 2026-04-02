@@ -5,6 +5,7 @@
 
 import { Type } from '@sinclair/typebox';
 import { get } from '../client/apiClient.js';
+import { getTodayBeijing, formatBeijingDate } from '../utils/datetime.js';
 
 export const getTodayFocusTool = {
   name: 'get_today_focus',
@@ -44,17 +45,15 @@ export const getTodayFocusTool = {
         }>;
       }>(url);
 
-      // 格式化日期显示
-      const displayDate = params.date || new Date().toISOString().split('T')[0];
-      const dateObj = new Date(displayDate);
-      const weekdays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-      const weekday = weekdays[dateObj.getDay()];
+      // 格式化日期显示（使用北京时间）
+      const displayDate = params.date || getTodayBeijing();
+      const formattedDate = formatBeijingDate(displayDate);
 
       // 格式化输出
       const output = [
         '🎯 今日重点任务',
         '═══════════════════════════════════════',
-        `📅 ${displayDate} ${weekday}`,
+        `📅 ${formattedDate}`,
         ''
       ];
 
