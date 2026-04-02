@@ -393,7 +393,7 @@ DEBUG=true npm run dev
 
 ## 📞 联系方式
 
-- **作者**: Lingyun
+- **作者**: feixuelingcloud
 - **Email**: yemihu@lingcloud.ai
 - **GitHub**: [@feixuelingcloud](https://github.com/feixuelingcloud)
 
@@ -444,6 +444,6 @@ npm run build
 
 **[⬆ 回到顶部](#-lingcloud-ai-计划管理器)**
 
-Made with ❤️ by Lingyun
+Made with ❤️ by feixuelingcloud
 
 </div>
