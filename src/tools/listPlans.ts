@@ -51,7 +51,8 @@ export const listPlansTool = {
         plans: Array<{
           plan_id: string;
           title: string;
-          status: string;
+          status?: string;
+          completed?: boolean;
           progress: number;
           createTime: string;
           startDate?: string;
@@ -87,7 +88,12 @@ export const listPlansTool = {
       ];
 
       response.plans.forEach((plan, index) => {
-        const emoji = statusEmoji[plan.status] || '📌';
+        // 确定状态 emoji：只读取 status 字段
+        let emoji = '📌';
+        if (plan.status) {
+          emoji = statusEmoji[plan.status] || '📌';
+        }
+
         const lines = [
           `${index + 1}. ${plan.title} (${plan.category || '其他'}) ${emoji}`,
         ];

@@ -4,18 +4,18 @@
  */
 
 import { Type } from '@sinclair/typebox';
-import { post } from '../client/apiClient.js';
+import { patch } from '../client/apiClient.js';
 
 export const updateTaskStatusTool = {
   name: 'update_task_status',
-  description: 'Update individual task status (WRITE operation). Supported statuses: todo, doing, done, blocked, delayed. Modifies task status in database. Requires user confirmation.',
+  description: '⚠️ FOR SUB-TASKS ONLY. Update the status of an individual sub-task (NOT a plan). Supported statuses: todo, doing, done, blocked, delayed. DO NOT use this tool to mark a PLAN as completed — use update_plan with completed=true instead. This tool only updates sub-task status and does NOT change the plan\'s completion state.',
 
   parameters: Type.Object({
     task_id: Type.String({
-      description: '任务ID,从get_plan_detail的tasks列表中获取'
+      description: '子任务ID（从 get_plan_detail 返回的 tasks 列表中获取）。注意：这是子任务ID，不是计划ID。若要完成计划，请用 update_plan 工具传入 completed=true'
     }),
     status: Type.String({
-      description: '新的状态值',
+      description: '子任务的新状态值（仅适用于子任务）',
       enum: ['todo', 'doing', 'done', 'blocked', 'delayed']
     }),
     note: Type.Optional(Type.String({
@@ -28,7 +28,7 @@ export const updateTaskStatusTool = {
 
   async execute(_id: string, params: { task_id: string; status: string; note?: string }) {
     try {
-      const response = await post<{
+      const response = await patch<{
         task_id: string;
         status: string;
         progress_after_update: number;

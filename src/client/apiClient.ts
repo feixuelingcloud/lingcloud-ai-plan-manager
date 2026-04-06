@@ -99,3 +99,17 @@ export async function get<T = any>(path: string): Promise<T> {
 export async function post<T = any>(path: string, body: any): Promise<T> {
   return request<T>('POST', path, body);
 }
+
+/**
+ * PUT 请求
+ */
+export async function put<T = any>(path: string, body: any): Promise<T> {
+  return request<T>('PUT', path, body);
+}
+
+/**
+ * PATCH 请求
+ */
+export async function patch<T = any>(path: string, body: any): Promise<T> {
+  return request<T>('PATCH', path, body);
+}

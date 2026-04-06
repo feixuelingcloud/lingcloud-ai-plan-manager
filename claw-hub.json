@@ -59,14 +59,7 @@
         "apiKey": {
           "type": "string",
           "title": "API Key",
-          "description": "Your AI Plan Manager API Key",
-          "required": true
-        },
-        "apiBaseUrl": {
-          "type": "string",
-          "title": "API Base URL",
-          "description": "The base URL of your AI Plan Manager API",
-          "default": "https://your-backend-api.com/api",
+          "description": "Your AI Plan Manager API Key (get it from https://plan.lingcloudai.com/api)",
           "required": true
         }
       }

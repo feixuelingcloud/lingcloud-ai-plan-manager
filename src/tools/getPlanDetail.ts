@@ -23,7 +23,8 @@ export const getPlanDetailTool = {
           plan_id: string;
           title: string;
           description: string;
-          status: string;
+          status?: string;
+          completed?: boolean;
           progress: number;
           createTime: string;
           startDate?: string;
@@ -56,13 +57,19 @@ export const getPlanDetailTool = {
         blocked: '🚫 被阻塞'
       };
 
+      // 确定状态显示：只读取 status 字段
+      let statusDisplay = '未设置';
+      if (plan.status) {
+        statusDisplay = statusEmoji[plan.status] || plan.status;
+      }
+
       const output = [
         '📋 计划详情',
         '═══════════════════════════════════════',
         '',
         `📌 ${plan.title}`,
         `🏷️ 分类: ${plan.category || '未分类'}`,
-        `📊 状态: ${statusEmoji[plan.status] || plan.status}`,
+        `📊 状态: ${statusDisplay}`,
         `📈 进度: ${plan.progress}%`,
         ''
       ];
