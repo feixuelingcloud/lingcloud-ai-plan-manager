@@ -1,7 +1,7 @@
 {
-  "name": "lingcloud-ai-plan-manager",
-  "displayName": "LingCloud AI Plan Manager",
-  "version": "1.0.0",
+  "name": "@lingyun/ai-plan-manager",
+  "displayName": "AI Plan Manager",
+  "version": "1.0.1",
   "description": "A powerful OpenClaw plugin for intelligent plan and task management with AI assistance",
   "author": {
     "name": "feixuelingcloud",
