@@ -21,7 +21,7 @@ interface ApiResponse<T = any> {
  */
 async function request<T = any>(method: string, path: string, body: any = null): Promise<T> {
   return new Promise((resolve, reject) => {
-    const url = new URL(path, CONFIG.apiBase);
+    const url = new URL(CONFIG.apiBase.replace(/\/$/, '') + path);
     const isHttps = url.protocol === 'https:';
     const httpModule = isHttps ? https : http;
 
