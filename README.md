@@ -1,12 +1,12 @@
-# 🎯 LingCloud AI 计划管理器
+# 🎯 GotoPlan - AI 计划管理器
 
 <div align="center">
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager)
+[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Plugin-orange.svg)](https://openclaw.ai)
 
-**一个强大的 OpenClaw 插件，通过 AI 助手实现智能计划和任务管理**
+**一个强大的 OpenClaw 插件，通过 AI 助手实现智能计划和任务管理、AI 员工克隆与 Boss 多 Agent 编排**
 
 [English](README_EN.md) | 简体中文
 
@@ -38,11 +38,27 @@
 - **今日重点** - 快速查看今天需要关注的任务
 - **计划提醒** - 智能提醒即将到期的任务
 
-### 🤖 AI 集成
+### 🤖 AI 员工克隆与 Boss 多 Agent 编排
+- **AI 员工列表** - 查看当前账号下所有可用的 AI 员工
+- **一键克隆员工** - 将 AI 员工克隆为活跃的 Agent（支持单个或批量克隆）
+- **克隆体管理** - 查看所有已激活的克隆 Agent，支持停用
+- **Boss 任务分派** - Boss 助理向指定 Agent 下发任务，Agent 自主执行
+- **任务状态追踪** - 实时查询已分派任务的执行进度
+- **工作汇报系统** - Agent 完成任务后自动提交工作报告，Boss 审阅确认
+- **Boss 晨间调度** - 每天早上一键将当日待办任务自动分派给各 Agent
+
+### 📝 计划成果同步（Notion / 飞书）
+- **Notion 同步** - 确认报告后自动将成果写入 Notion 页面（Markdown 格式完整保留）
+- **飞书文档同步** - 确认报告后自动创建飞书 Docx 文档并写入成果
+- **灵活选择** - 每次确认报告时可选同步目标：`notion` / `feishu` / `both` / `none` / `auto`
+- **自动模式** - `auto` 模式下根据插件配置开关自动决定同步到哪个平台
+
+### 🔌 AI 集成
 - 自然语言交互
 - 智能时间解析（支持"明天"、"下周一"等自然表达）
 - 上下文感知的任务管理
 - 自动化的工作流建议
+- **连接诊断** - 内置连接测试工具，快速排查 API Key / 网络问题
 
 ---
 
@@ -174,6 +190,31 @@ OpenClaw 会自动帮你更新配置！
 
 配置完成后重启 OpenClaw 即可生效。
 
+### Notion 同步配置（可选）
+
+在 OpenClaw 插件配置中添加以下字段，即可在确认报告时自动同步成果到 Notion：
+
+| 配置项 | 说明 |
+|-------|------|
+| `notionEnabled` | 设为 `true` 启用 Notion 同步 |
+| `notionApiKey` | Notion Integration Token（以 `secret_` 或 `ntn_` 开头） |
+| `notionParentPageId` | Notion 父页面 ID（成果会写入该页面下的当日子页面） |
+
+> 获取方式：在 [Notion Integrations](https://www.notion.so/my-integrations) 创建 Integration，获取 Token 后邀请至目标页面。
+
+### 飞书文档同步配置（可选）
+
+在 OpenClaw 插件配置中添加以下字段，即可在确认报告时自动同步成果到飞书文档：
+
+| 配置项 | 说明 |
+|-------|------|
+| `feishuEnabled` | 设为 `true` 启用飞书同步 |
+| `feishuAppId` | 飞书开放平台应用的 App ID |
+| `feishuAppSecret` | 飞书开放平台应用的 App Secret |
+| `feishuFolderToken` | （可选）飞书云空间文件夹 token，设置后文档会创建在该文件夹下 |
+
+> 获取方式：在 [飞书开放平台](https://open.feishu.cn/) 创建企业自建应用，开启「云文档」权限，获取 App ID 和 App Secret。
+
 ---
 
 ## 📖 使用指南
@@ -234,6 +275,68 @@ AI 会帮你生成计划草稿，确认后会自动创建。
 显示今日重点任务
 ```
 
+### AI 员工克隆与 Boss 调度
+
+#### 7. 查看 AI 员工 👥
+
+```
+列出我的AI员工
+```
+
+#### 8. 克隆 AI 员工 🧬
+
+```
+克隆我的AI员工
+```
+
+```
+把"小王"克隆为活跃Agent
+```
+
+#### 9. 查看已克隆的 Agent 🤖
+
+```
+列出所有克隆体
+```
+
+#### 10. Boss 分派任务 📤
+
+```
+给"写作助手"分派任务：撰写一篇关于AI趋势的分析报告
+```
+
+#### 11. 查看任务执行状态 🔍
+
+```
+查看任务执行状态
+```
+
+#### 12. 查看工作汇报 📬
+
+```
+查看Agent的工作汇报
+```
+
+#### 13. 确认报告并同步成果 ✅
+
+```
+确认这份报告，并同步到飞书
+```
+
+```
+确认报告，同步到Notion
+```
+
+```
+确认报告，同时同步到飞书和Notion
+```
+
+#### 14. Boss 晨间调度 🌅
+
+```
+执行晨间调度，把今天的任务分派给各Agent
+```
+
 ### 高级功能
 
 #### 时间范围筛选 📅
@@ -269,19 +372,37 @@ AI 会帮你生成计划草稿，确认后会自动创建。
 
 ## 🛠️ 可用工具
 
-插件提供以下 9 个工具：
+插件提供以下 **20 个工具**：
+
+#### 计划管理（10 个）
 
 | 工具名称 | 描述 | 类型 |
 |---------|------|------|
 | `create_plan_draft` | 创建计划草稿 | 只读 |
 | `confirm_plan` | 确认创建计划 | 写入 |
 | `update_plan` | 修改计划信息 | 写入 |
-| `list_plans` | 列出计划列表 | 只读 |
+| `list_plans` | 列出计划列表（支持时间范围/状态筛选） | 只读 |
 | `get_plan_detail` | 获取计划详情 | 只读 |
 | `update_task_status` | 更新任务状态 | 写入 |
 | `generate_execution_report` | 生成执行报告 | 只读 |
 | `get_plan_reminders` | 获取计划提醒 | 只读 |
 | `get_today_focus` | 获取今日重点 | 只读 |
+| `test_connection` | 连接诊断（排查 Token/网络问题） | 只读 |
+
+#### AI 员工克隆与 Boss 多 Agent 编排（10 个）
+
+| 工具名称 | 描述 | 类型 |
+|---------|------|------|
+| `list_ai_staff` | 列出当前账号的 AI 员工 | 只读 |
+| `clone_staff_agent` | 克隆某个员工为活跃 Agent | 写入 |
+| `clone_all_ai_staff` | 批量克隆所有 AI 员工 | 写入 |
+| `list_cloned_agents` | 列出所有已激活的克隆 Agent | 只读 |
+| `remove_clone` | 停用某个克隆 Agent | 写入 |
+| `dispatch_task_to_agent` | Boss 向指定 Agent 分派任务 | 写入 |
+| `get_task_status` | 查询已分派任务的执行状态 | 只读 |
+| `get_boss_reports` | Boss 获取 Agent 提交的工作汇报 | 只读 |
+| `acknowledge_report` | Boss 确认报告（可选同步到 Notion/飞书） | 写入 |
+| `boss_morning_dispatch` | Boss 晨间自动调度：分派当日任务给各 Agent | 写入 |
 
 ---
 
@@ -290,11 +411,11 @@ AI 会帮你生成计划草稿，确认后会自动创建。
 ```
 lingcloud-ai-plan-manager/
 ├── src/
-│   ├── client/          # API 客户端
+│   ├── client/              # API 客户端
 │   │   └── apiClient.ts
-│   ├── config/          # 配置管理
+│   ├── config/              # 配置管理
 │   │   └── index.ts
-│   ├── tools/           # OpenClaw 工具
+│   ├── tools/               # OpenClaw 工具（20 个）
 │   │   ├── createPlanDraft.ts
 │   │   ├── confirmPlan.ts
 │   │   ├── updatePlan.ts
@@ -303,18 +424,38 @@ lingcloud-ai-plan-manager/
 │   │   ├── updateTaskStatus.ts
 │   │   ├── generateReport.ts
 │   │   ├── getPlanReminders.ts
-│   │   └── getTodayFocus.ts
-│   └── utils/           # 工具函数
-│       └── errors.ts
-├── dist/                # 编译输出
-├── index.ts             # 插件入口
+│   │   ├── getTodayFocus.ts
+│   │   ├── testConnection.ts
+│   │   ├── listAIStaff.ts
+│   │   ├── cloneStaffAgent.ts
+│   │   ├── cloneAllAIStaff.ts
+│   │   ├── listClonedAgents.ts
+│   │   ├── removeClone.ts
+│   │   ├── dispatchTaskToAgent.ts
+│   │   ├── getTaskStatus.ts
+│   │   ├── getBossReports.ts
+│   │   ├── acknowledgeReport.ts
+│   │   └── bossMorningDispatch.ts
+│   └── utils/               # 工具函数
+│       ├── errors.ts
+│       ├── datetime.ts
+│       ├── openclawCli.ts
+│       ├── notionClient.ts  # Notion 同步
+│       └── feishuClient.ts  # 飞书 Docx 同步
+├── skills/                  # 技能文档
+│   ├── ai-plan-management/
+│   └── boss-orchestration/
+├── dist/                    # 编译输出
+├── index.ts                 # 插件入口
+├── claw-hub.json            # ClawHub 插件描述
+├── openclaw.plugin.json     # OpenClaw 插件配置
 ├── package.json
 ├── tsconfig.json
-├── README.md            # 中文文档
-├── README_EN.md         # 英文文档
-├── INSTALLATION.md      # 详细安装指导
-├── CHANGELOG.md         # 更新日志
-└── LICENSE              # MIT 许可证
+├── README.md                # 中文文档
+├── README_EN.md             # 英文文档
+├── INSTALLATION.md          # 详细安装指导
+├── CHANGELOG.md             # 更新日志
+└── LICENSE                  # MIT 许可证
 ```
 
 ---
@@ -347,6 +488,22 @@ DEBUG=true npm run dev
 ---
 
 ## 🆕 更新日志
+
+### v1.0.2 (2026-04-15)
+
+#### ✨ 新功能
+- ✅ 插件更名为 **GotoPlan**
+- ✅ **飞书文档同步** - 确认报告时可自动创建飞书 Docx 并写入成果
+- ✅ **Notion 同步** - 确认报告时可自动写入 Notion 页面（Markdown 格式保留）
+- ✅ **同步目标可选** - `acknowledge_report` 新增 `syncTarget` 参数（`notion` / `feishu` / `both` / `none` / `auto`）
+- ✅ **AI 员工克隆** - 支持单个或批量克隆 AI 员工为活跃 Agent
+- ✅ **Boss 多 Agent 编排** - Boss 助理可向 Agent 分派任务、查看汇报、晨间自动调度
+- ✅ **连接诊断工具** - `test_connection` 快速排查 API Key / 网络问题
+- ✅ 工具总数从 9 个扩展到 **20 个**
+
+#### 🔧 配置增强
+- ✅ `claw-hub.json` schema 新增 Notion 和飞书所有配置字段
+- ✅ 支持通过插件配置或环境变量配置飞书/Notion 凭据
 
 ### v1.0.0 (2026-03-31)
 
@@ -442,7 +599,7 @@ npm run build
 
 <div align="center">
 
-**[⬆ 回到顶部](#-lingcloud-ai-计划管理器)**
+**[⬆ 回到顶部](#-gotoplan---ai-计划管理器)**
 
 Made with ❤️ by feixuelingcloud
 

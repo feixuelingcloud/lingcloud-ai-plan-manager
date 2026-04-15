@@ -1,7 +1,7 @@
 {
   "id": "@feixuelingcloud/lingcloud-ai-plan-manager",
   "name": "AI Plan Manager",
-  "version": "10.0.2",
+  "version": "1.0.2",
   "description": "AI计划管理系统 OpenClaw 插件",
   "type": "module",
   "openclaw": {
