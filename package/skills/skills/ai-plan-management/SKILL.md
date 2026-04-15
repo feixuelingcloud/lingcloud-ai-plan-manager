@@ -2,17 +2,12 @@
 name: ai_plan_management
 description: 使用AI计划管理系统工具创建、查询和管理计划。支持智能识别用户意图、自动提取参数,记忆对话上下文。
 metadata:
-  version: "1.0.1"
+  version: "1.0.0"
   author: "Lingyun"
   openclaw:
     requires:
       config:
         - AI_PLAN_API_KEY
-    # ⚠️ 注意：插件同时支持以下三种 Key 名称绑定方式，任意一种有值即可：
-    #   1. apiKey            ← OpenClaw 插件配置界面（推荐，claw-hub.json schema）
-    #   2. AI_PLAN_API_KEY   ← OpenClaw Skill 配置界面（SKILL.md requires.config）
-    #   3. 环境变量 AI_PLAN_API_KEY（OpenClaw 技能系统自动注入）
-    # 如果在 OpenClaw 插件设置页面看到的字段名是 "apiKey"，请填写到该字段。
 ---
 
 # AI计划管理系统 Skill

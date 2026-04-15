@@ -63,7 +63,11 @@ async function request<T = any>(method: string, path: string, body: any = null):
 
           resolve(parsed.data as T);
         } catch (parseError: any) {
-          reject(new Error(`Failed to parse API response: ${parseError.message}`));
+          const preview = data.slice(0, 300).replace(/\n/g, ' ');
+          reject(new Error(
+            `Failed to parse API response (HTTP ${res.statusCode}): ${parseError.message}\n` +
+            `响应内容预览: ${preview || '(空)'}`
+          ));
         }
       });
     });
@@ -112,4 +116,11 @@ export async function put<T = any>(path: string, body: any): Promise<T> {
  */
 export async function patch<T = any>(path: string, body: any): Promise<T> {
   return request<T>('PATCH', path, body);
+}
+
+/**
+ * DELETE 请求
+ */
+export async function del<T = any>(path: string): Promise<T> {
+  return request<T>('DELETE', path);
 }

@@ -24,6 +24,14 @@ export class ApiError extends Error {
   toUserMessage(): string {
     let msg = `❌ ${this.message}`;
 
+    if (this.code && this.code !== 'UNKNOWN_ERROR') {
+      msg += `\n🔖 错误码: ${this.code}`;
+    }
+
+    if (this.statusCode) {
+      msg += `\n📡 HTTP 状态: ${this.statusCode}`;
+    }
+
     if (this.suggestion) {
       msg += `\n\n💡 建议: ${this.suggestion}`;
     }

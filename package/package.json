@@ -17,8 +17,7 @@
     "build": "tsc",
     "dev": "tsx index.ts",
     "check": "tsc --noEmit",
-    "prepublishOnly": "npm run build",
-    "postinstall": "node ./scripts/ensure-dist.mjs"
+    "prepublishOnly": "npm run build"
   },
   "engines": {
     "node": ">=18"

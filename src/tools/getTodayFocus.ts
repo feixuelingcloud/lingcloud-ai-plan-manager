@@ -42,6 +42,23 @@ export const getTodayFocusTool = {
           task_id: string;
           title: string;
           reason: string;
+          description?: string;
+          startDate?: string | null;
+          dueDate?: string | null;
+          priority?: string;
+          taskCategory?: string;
+          status?: string;
+          ai_executors?: Array<{
+            agentId: string;
+            name: string;
+            role?: string;
+            emoji?: string;
+          }>;
+          human_executors?: Array<{
+            userId: string;
+            name: string;
+            role?: string;
+          }>;
         }>;
       }>(url);
 
@@ -68,9 +85,43 @@ export const getTodayFocusTool = {
         output.push('');
 
         response.focus_tasks.forEach((task, index) => {
-          output.push(`${index + 1}. ${task.title}`);
+          output.push(`${index + 1}. **${task.title}**`);
+
+          // 优先级类型（优先显示四象限分类，否则显示 high/medium/low 的中文）
+          const priorityMap: Record<string, string> = { high: '高优先级', medium: '中优先级', low: '低优先级' };
+          const priorityText = task.taskCategory || priorityMap[task.priority || 'medium'] || task.priority || '';
+          if (priorityText) {
+            output.push(`   📊 优先级: ${priorityText}`);
+          }
+
+          // 计划内容
+          if (task.description) {
+            output.push(`   📝 内容: ${task.description}`);
+          }
+
+          // 时间范围
+          if (task.startDate || task.dueDate) {
+            const start = task.startDate || '—';
+            const due = task.dueDate || '—';
+            output.push(`   📅 时间: ${start} → ${due}`);
+          }
+
+          // 执行人（AI员工 + 真实同事合并显示）
+          const allExecutors: string[] = [];
+          if (task.ai_executors) {
+            task.ai_executors.forEach(e => allExecutors.push(`${e.name}（AI员工）`));
+          }
+          if (task.human_executors) {
+            task.human_executors.forEach(e => allExecutors.push(`${e.name}（同事）`));
+          }
+          if (allExecutors.length > 0) {
+            output.push(`   👥 执行人: ${allExecutors.join('、')}`);
+          }
+
+          // 推荐原因
           output.push(`   💡 ${task.reason}`);
           output.push(`   🆔 任务ID: ${task.task_id}`);
+
           if (index < response.focus_tasks.length - 1) {
             output.push('');
           }

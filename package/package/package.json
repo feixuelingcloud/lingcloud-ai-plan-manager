@@ -1,24 +1,17 @@
 {
-  "name": "@lingcloud/ai-plan-manager",
-  "version": "10.0.2",
+  "name": "lingcloud-ai-plan-manager",
+  "version": "1.0.0",
   "description": "A powerful OpenClaw plugin for intelligent plan and task management with AI assistance",
   "type": "module",
   "main": "dist/index.js",
   "openclaw": {
-    "extensions": ["./dist/index.js"],
-    "compat": {
-      "pluginApi": "1.0.0"
-    },
-    "build": {
-      "openclawVersion": "1.0.0"
-    }
+    "extensions": ["./dist/index.js"]
   },
   "scripts": {
     "build": "tsc",
     "dev": "tsx index.ts",
     "check": "tsc --noEmit",
-    "prepublishOnly": "npm run build",
-    "postinstall": "node ./scripts/ensure-dist.mjs"
+    "prepublishOnly": "npm run build"
   },
   "engines": {
     "node": ">=18"
