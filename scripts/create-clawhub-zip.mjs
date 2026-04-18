@@ -41,6 +41,7 @@ const optionalEntries = [
   "skills",
   "fix-config.bat",
   "fix-config.sh",
+  "windows-install.ps1",
 ];
 
 for (const entry of requiredEntries) {
