@@ -16,6 +16,13 @@ const projectRoot = path.resolve(__dirname, "..");
 
 const packageJsonPath = path.join(projectRoot, "package.json");
 const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8"));
+const pluginManifestPath = path.join(projectRoot, "openclaw.plugin.json");
+const pluginManifest = JSON.parse(readFileSync(pluginManifestPath, "utf8"));
+/** Zip basename: strip npm scope from plugin id (e.g. @feixuelingcloud/lingcloud-ai-plan-manager → lingcloud-ai-plan-manager) */
+const zipSlug = String(pluginManifest.id || packageJson.name).replace(
+  /^@[^/]+\//,
+  "",
+);
 
 const requiredEntries = [
   "package.json",
@@ -46,7 +53,7 @@ const tempRootDir = path.join(projectRoot, ".release");
 mkdirSync(tempRootDir, { recursive: true });
 const stagingDir = mkdtempSync(path.join(tempRootDir, "clawhub-"));
 const packageRoot = path.join(stagingDir, "package-root");
-const outputFileName = `${packageJson.name}-${packageJson.version}-clawhub.zip`;
+const outputFileName = `${zipSlug}-${packageJson.version}-clawhub.zip`;
 const outputFilePath = path.join(releaseDir, outputFileName);
 
 mkdirSync(packageRoot, { recursive: true });
@@ -64,18 +71,25 @@ for (const entry of [...requiredEntries, ...optionalEntries]) {
 }
 
 if (process.platform === "win32") {
-  execFileSync(
-    "powershell.exe",
-    [
-      "-NoProfile",
-      "-Command",
-      `Compress-Archive -Path * -DestinationPath '${outputFilePath.replace(/'/g, "''")}' -Force`,
-    ],
-    {
+  try {
+    execFileSync("tar.exe", ["-a", "-cf", outputFilePath, "."], {
       cwd: packageRoot,
       stdio: "inherit",
-    },
-  );
+    });
+  } catch {
+    execFileSync(
+      "powershell.exe",
+      [
+        "-NoProfile",
+        "-Command",
+        `Compress-Archive -Path * -DestinationPath '${outputFilePath.replace(/'/g, "''")}' -Force`,
+      ],
+      {
+        cwd: packageRoot,
+        stdio: "inherit",
+      },
+    );
+  }
 } else {
   try {
     execFileSync("zip", ["-r", "-q", outputFilePath, "."], {

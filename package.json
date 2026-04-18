@@ -1,6 +1,6 @@
 {
   "name": "@lingcloud/ai-plan-manager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A powerful OpenClaw plugin for intelligent plan and task management with AI assistance",
   "type": "module",
   "main": "dist/index.js",
@@ -18,7 +18,8 @@
     "dev": "tsx index.ts",
     "check": "tsc --noEmit",
     "prepublishOnly": "npm run build",
-    "postinstall": "node ./scripts/ensure-dist.mjs"
+    "postinstall": "node ./scripts/ensure-dist.mjs",
+    "release:zip": "node ./scripts/create-clawhub-zip.mjs"
   },
   "engines": {
     "node": ">=18"

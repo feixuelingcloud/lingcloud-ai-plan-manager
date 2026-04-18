@@ -124,13 +124,18 @@ API Key: your-api-key
    - API Base URL: 后端服务地址
 
 ### 通过配置文件
-编辑 OpenClaw 配置文件,添加:
+编辑 **`~/.openclaw/openclaw.json`**，在 `plugins.entries` 下配置（键名与 `openclaw.plugin.json` 一致）：
 ```json
 {
   "plugins": {
-    "lingcloud-ai-plan-manager": {
-      "apiKey": "your-api-key",
-      "apiBaseUrl": "https://your-backend-api.com/api"
+    "entries": {
+      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+        "enabled": true,
+        "config": {
+          "apiKey": "your-api-key",
+          "apiBase": "https://your-backend-api.com/api"
+        }
+      }
     }
   }
 }

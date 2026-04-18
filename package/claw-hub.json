@@ -1,7 +1,7 @@
 {
   "name": "@lingcloud/ai-plan-manager",
   "displayName": "GotoPlan",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A powerful OpenClaw plugin for intelligent plan and task management with AI assistance",
   "author": {
     "name": "feixuelingcloud",

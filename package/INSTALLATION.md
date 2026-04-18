@@ -102,27 +102,32 @@ npm run build
 openclaw plugins install -l ./lingcloud-ai-plan-manager
 ```
 
-**选项 B - 手动编辑配置文件**：
+**选项 B - 手动编辑配置文件**（不推荐；易与旧文档混淆）
 
-编辑 `~/.openclaw/config.json`（或你的 OpenClaw 配置文件路径）：
+编辑 **`~/.openclaw/openclaw.json`**。当前 OpenClaw 网关使用 **`plugins.entries`**，**禁止**在 `entries` 下写 `path` / `name`（否则会报 `Unrecognized key: "path"`）。
+
+从源码目录加载时需 **`plugins.load.paths`（绝对路径）** + **`plugins.entries` 仅含 `enabled` / `config`**：
 
 ```json
 {
-  "plugins": [
-    {
-      "name": "lingcloud-ai-plan-manager",
-      "path": "/absolute/path/to/lingcloud-ai-plan-manager",
-      "enabled": true,
-      "config": {
-        "apiKey": "",
-        "apiBaseUrl": ""
+  "plugins": {
+    "load": {
+      "paths": ["/absolute/path/to/lingcloud-ai-plan-manager"]
+    },
+    "entries": {
+      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+        "enabled": true,
+        "config": {
+          "apiKey": "",
+          "apiBase": "https://plan.lingcloudai.com/api"
+        }
       }
     }
-  ]
+  }
 }
 ```
 
-**重要**: 使用绝对路径！
+**重要**：`paths` 使用插件根目录的绝对路径；业务配置键名与 `openclaw.plugin.json` 一致，为 **`apiBase`**（不要使用已废弃示例里的 `apiBaseUrl`）。
 
 **步骤 5**: 配置 API Key（见下文）
 
@@ -183,19 +188,21 @@ OpenClaw 会自动更新配置。
 
 #### 方式 2：手动编辑配置文件
 
-编辑 OpenClaw 配置文件 `~/.openclaw/config.json`：
+编辑 **`~/.openclaw/openclaw.json`**：
 
 ```json
 {
-  "plugins": [
-    {
-      "name": "lingcloud-ai-plan-manager",
-      "config": {
-        "apiKey": "your-api-key-here",
-        "apiBaseUrl": "https://your-backend-api.com/api"
+  "plugins": {
+    "entries": {
+      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+        "enabled": true,
+        "config": {
+          "apiKey": "your-api-key-here",
+          "apiBase": "https://your-backend-api.com/api"
+        }
       }
     }
-  ]
+  }
 }
 ```
 
@@ -265,7 +272,7 @@ openclaw plugins list
 
 **解决方法**:
 1. 验证 API Key 是否正确（重新生成一个试试）
-2. 检查 `apiBaseUrl` 是否可访问（在浏览器中打开试试）
+2. 检查 `apiBase` 是否可访问（在浏览器中打开试试）
 3. 确认后端服务正在运行：
    ```bash
    curl https://your-backend-api.com/api/health
@@ -435,25 +442,28 @@ openclaw plugins install -l ./lingcloud-ai-plan-manager
 
 **Option B - Manual configuration**:
 
-Edit `~/.openclaw/config.json` (or your OpenClaw config path):
+Edit **`~/.openclaw/openclaw.json`**. Do **not** put `path` under `plugins.entries` (gateway will reject with `Unrecognized key: "path"`). Use `plugins.load.paths` for the plugin root + `plugins.entries` for `enabled` / `config` only:
 
 ```json
 {
-  "plugins": [
-    {
-      "name": "lingcloud-ai-plan-manager",
-      "path": "/absolute/path/to/lingcloud-ai-plan-manager",
-      "enabled": true,
-      "config": {
-        "apiKey": "",
-        "apiBaseUrl": ""
+  "plugins": {
+    "load": {
+      "paths": ["/absolute/path/to/lingcloud-ai-plan-manager"]
+    },
+    "entries": {
+      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+        "enabled": true,
+        "config": {
+          "apiKey": "",
+          "apiBase": "https://plan.lingcloudai.com/api"
+        }
       }
     }
-  ]
+  }
 }
 ```
 
-**Important**: Use absolute path!
+**Important**: Use an absolute path in `load.paths`. Config keys must match `openclaw.plugin.json` (`apiBase`, not `apiBaseUrl`).
 
 **Step 5**: Configure API Key (see below)
 
@@ -514,19 +524,21 @@ OpenClaw will update the configuration automatically.
 
 #### Option 2: Manual Configuration
 
-Edit OpenClaw config file `~/.openclaw/config.json`:
+Edit **`~/.openclaw/openclaw.json`**:
 
 ```json
 {
-  "plugins": [
-    {
-      "name": "lingcloud-ai-plan-manager",
-      "config": {
-        "apiKey": "your-api-key-here",
-        "apiBaseUrl": "https://your-backend-api.com/api"
+  "plugins": {
+    "entries": {
+      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+        "enabled": true,
+        "config": {
+          "apiKey": "your-api-key-here",
+          "apiBase": "https://your-backend-api.com/api"
+        }
       }
     }
-  ]
+  }
 }
 ```
 
@@ -596,7 +608,7 @@ If the plugin works correctly, you'll see a plan list or prompt to create one.
 
 **Solutions**:
 1. Verify API Key is correct (try regenerating one)
-2. Check `apiBaseUrl` is accessible (try opening in browser)
+2. Check `apiBase` is accessible (try opening in browser)
 3. Confirm backend service is running:
    ```bash
    curl https://your-backend-api.com/api/health

@@ -42,9 +42,10 @@ export let CONFIG: PluginConfig = {
  * 2. pluginConfig.AI_PLAN_API_KEY ← SKILL.md requires.config key
  * 3. process.env.AI_PLAN_API_KEY  ← 环境变量（OpenClaw 技能系统注入）
  *
- * API Base 支持两种来源：
- * 1. pluginConfig.apiBase         ← 用户在 OpenClaw 里自定义（本地测试用 http://localhost:4000/api）
- * 2. process.env.AI_PLAN_API_BASE ← 环境变量
+ * API Base 支持来源（按优先级）：
+ * 1. pluginConfig.apiBase         ← openclaw.plugin.json configSchema（推荐）
+ * 2. pluginConfig.apiBaseUrl      ← 旧文档中的别名，兼容保留
+ * 3. process.env.AI_PLAN_API_BASE ← 环境变量
  */
 export function loadConfig(pluginConfig: any): void {
   // ── API Key ──────────────────────────────────────────────────────────────
@@ -60,6 +61,7 @@ export function loadConfig(pluginConfig: any): void {
   // ── API Base（允许用户覆盖后端地址，解决本地/远程数据库不一致问题）───────────
   const rawApiBase =
     pluginConfig?.apiBase ||
+    pluginConfig?.apiBaseUrl ||
     (typeof process !== 'undefined' ? process.env?.AI_PLAN_API_BASE : undefined);
 
   if (rawApiBase && String(rawApiBase).trim()) {

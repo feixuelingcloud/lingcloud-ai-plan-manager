@@ -40,6 +40,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.3] - 2026-04-18
+
+### Fixed
+- Documented OpenClaw `plugins.entries` / `openclaw.json` correctly; removed obsolete `plugins: []` + `path` examples that caused gateway validation errors.
+
+### Added
+- `loadConfig`: accept legacy `apiBaseUrl` as alias for `apiBase`.
+
+### Changed
+- `scripts/create-clawhub-zip.mjs`: zip output name `lingcloud-ai-plan-manager-<version>-clawhub.zip` (from plugin id), safe on Windows.
+
 ## [Unreleased]
 
 ### Planned Features

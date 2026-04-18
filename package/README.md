@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager)
+[![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Plugin-orange.svg)](https://openclaw.ai)
 
@@ -126,19 +126,29 @@
    openclaw plugins install -l ./lingcloud-ai-plan-manager
    ```
 
-   方式 B - 手动编辑配置文件 `~/.openclaw/config.json`：
+   方式 B - 手动编辑（**请勿**把 `path`、`name` 写在 `plugins.entries` 下，否则网关会报 `Unrecognized key: "path"` 并拒绝启动）
+
+   配置文件：**`~/.openclaw/openclaw.json`**（Windows：`%USERPROFILE%\.openclaw\openclaw.json`）
+
+   - 推荐仍用 CLI：`openclaw plugins install -l ./lingcloud-ai-plan-manager`，安装记录由 `plugins.installs` 维护。
+   - 若必须从源码目录加载插件，使用官方字段 `plugins.load.paths`（绝对路径）+ 仅在 `plugins.entries` 中写 `enabled` / `config`：
+
    ```json
    {
-     "plugins": [
-       {
-         "name": "lingcloud-ai-plan-manager",
-         "path": "/path/to/lingcloud-ai-plan-manager",
-         "config": {
-           "apiKey": "YOUR_API_KEY",
-           "apiBaseUrl": "https://plan.lingcloudai.com/api"
+     "plugins": {
+       "load": {
+         "paths": ["/absolute/path/to/lingcloud-ai-plan-manager"]
+       },
+       "entries": {
+         "@feixuelingcloud/lingcloud-ai-plan-manager": {
+           "enabled": true,
+           "config": {
+             "apiKey": "YOUR_API_KEY",
+             "apiBase": "https://plan.lingcloudai.com/api"
+           }
          }
        }
-     ]
+     }
    }
    ```
 
@@ -167,24 +177,25 @@
 请配置 lingcloud-ai-plan-manager 插件的 API Key: YOUR_API_KEY_HERE
 ```
 
-```
-
 OpenClaw 会自动帮你更新配置！
 
 #### 方法 2：手动编辑配置文件
 
-编辑 OpenClaw 配置文件 `~/.openclaw/config.json`：
+编辑 **`~/.openclaw/openclaw.json`**，在 `plugins.entries` 下只使用 `enabled`、`config` 等允许字段（与 `openclaw.plugin.json` 中 `configSchema` 一致，接口地址键名为 **`apiBase`**）：
+
 ```json
 {
-  "plugins": [
-    {
-      "name": "lingcloud-ai-plan-manager",
-      "config": {
-        "apiKey": "YOUR_API_KEY",
-        "apiBaseUrl": "https://plan.lingcloudai.com/api"
+  "plugins": {
+    "entries": {
+      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+        "enabled": true,
+        "config": {
+          "apiKey": "YOUR_API_KEY",
+          "apiBase": "https://plan.lingcloudai.com/api"
+        }
       }
     }
-  ]
+  }
 }
 ```
 
@@ -488,6 +499,14 @@ DEBUG=true npm run dev
 ---
 
 ## 🆕 更新日志
+
+### v1.0.3 (2026-04-18)
+
+#### 📝 文档与兼容性
+- 安装说明改为当前 OpenClaw 的 `plugins.entries` / `openclaw.json`，避免在 `entries` 中误写 `path` 导致网关 `Unrecognized key` 启动失败
+- 配置示例统一使用 `apiBase`（与 `openclaw.plugin.json` 一致）
+- `loadConfig` 兼容旧文档中的 `apiBaseUrl` 别名
+- ClawHub 打包 zip 文件名改为 `lingcloud-ai-plan-manager-<version>-clawhub.zip`（避免 npm scope 中的 `/` 在 Windows 下非法）
 
 ### v1.0.2 (2026-04-15)
 

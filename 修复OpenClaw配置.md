@@ -1,6 +1,24 @@
 # 修复 OpenClaw 配置问题
 
-## 问题描述
+## 问题：Gateway 启动失败 — `Unrecognized key: "path"`（plugins.entries）
+
+**现象**：终端报错类似  
+`plugins.entries.@feixuelingcloud/lingcloud-ai-plan-manager: Unrecognized key: "path"`，并提示 `Invalid configuration`。
+
+**原因**：新版 OpenClaw 中，**`plugins.entries.<插件ID>`** 只允许 `enabled`、`config`、`apiKey`、`env`、`hooks`、`subagent` 等字段。**不能把旧文档里的 `path`、`name` 写在 `entries` 里**。本地目录加载应使用 **`plugins.load.paths`**；安装来源由 **`plugins.installs`**（CLI 安装时写入）管理。
+
+**处理**：
+
+1. 打开 `~/.openclaw/openclaw.json`（Windows：`%USERPROFILE%\.openclaw\openclaw.json`）。
+2. 在 `plugins.entries["@feixuelingcloud/lingcloud-ai-plan-manager"]` 中**删除** `path` 及所有非允许字段。
+3. 仅保留例如：`"enabled": true` 与 `"config": { "apiKey": "...", "apiBase": "..." }`（键名与插件根目录 `openclaw.plugin.json` 的 `configSchema` 一致，为 **`apiBase`**）。
+4. 执行 `openclaw doctor --fix` 后重试启动网关。
+
+详见仓库内 `README.md` / `INSTALLATION.md` 中已更新的配置示例。
+
+---
+
+## 问题描述（历史：`plugins.installs` 的 `source`）
 
 OpenClaw 配置文件中插件的 `source` 字段值无效：
 
