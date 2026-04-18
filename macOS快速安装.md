@@ -1,15 +1,20 @@
 # macOS 快速安装
 
-## 前提
-- Node.js >= 18（终端执行 `node -v` 确认）
-- OpenClaw 已安装
-- 有效的 API Key
+## ✅ 推荐：通过 OpenClaw 聊天自动安装
+
+打开 **OpenClaw 聊天界面**，输入：
+
+```
+从 GitHub 安装插件：https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+```
+
+OpenClaw 会自动完成克隆、构建、配置全流程，按提示填入 API Key 即可 🎉
 
 ---
 
-## 一、克隆仓库并运行安装脚本
+## 备选：手动安装
 
-打开终端（`Command + 空格` → 输入 `Terminal` → 回车），粘贴以下命令：
+如果聊天安装失败，打开终端（`Command + 空格` → 输入 `Terminal`）：
 
 ```bash
 git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
@@ -17,17 +22,11 @@ cd lingcloud-ai-plan-manager
 chmod +x install.sh && ./install.sh
 ```
 
-脚本自动完成：
-- ✅ 将插件文件复制到 `~/.openclaw/plugins/lingcloud-ai-plan-manager/`
-- ✅ 运行 `npm install`，触发自动配置修复
-- ✅ 修复 `openclaw.json`（`plugins.load.paths` 正确指向插件目录）
-- ✅ 重启 OpenClaw Gateway
-
 ---
 
-## 二、配置 API Key
+## 配置 API Key
 
-编辑 `~/.openclaw/openclaw.json`，找到以下片段填入 API Key：
+安装后编辑 `~/.openclaw/openclaw.json`，填入 API Key：
 
 ```json
 {
@@ -36,7 +35,7 @@ chmod +x install.sh && ./install.sh
       "@feixuelingcloud/lingcloud-ai-plan-manager": {
         "enabled": true,
         "config": {
-          "apiKey": "在这里填入你的API Key",
+          "apiKey": "在这里填入你的 API Key",
           "apiBase": "https://plan.lingcloudai.com/api"
         }
       }
@@ -45,23 +44,11 @@ chmod +x install.sh && ./install.sh
 }
 ```
 
-保存后重启：
-
-```bash
-openclaw gateway restart
-```
-
----
-
-## 三、验证
-
-在 OpenClaw 中输入：
+或在 OpenClaw 聊天中直接说：
 
 ```
-告诉我本周的计划
+请配置 lingcloud-ai-plan-manager 的 API Key: YOUR_API_KEY_HERE
 ```
-
-看到计划列表或提示创建新计划即表示安装成功 🎉
 
 ---
 
@@ -69,9 +56,7 @@ openclaw gateway restart
 
 | 错误 | 解决方法 |
 |------|---------|
-| `Unrecognized key: "path"` | 运行 `bash fix-config.sh` |
-| `plugin not found` | 重新运行 `./install.sh` |
-| `openclaw: command not found` | 检查 OpenClaw 是否已安装并加入 PATH |
+| `plugin not found` | 重新聊天安装，或运行 `bash install.sh` |
+| `openclaw: command not found` | 检查 OpenClaw 是否加入 PATH，见 [macOS安装指南.md](macOS安装指南.md) |
 | `node: command not found` | 安装 Node.js >= 18：https://nodejs.org |
-
-详细说明见 [macOS安装指南.md](macOS安装指南.md)
+| 工具不可用 | `cd ~/.openclaw/plugins/lingcloud-ai-plan-manager && npm run build && openclaw gateway restart` |

@@ -64,13 +64,25 @@
 
 ## 🚀 快速开始
 
-> ⚠️ **重要**：请勿使用 OpenClaw 聊天界面的"自动安装"功能，该方式只写配置记录
-> 而不安装文件，会导致 `plugin not found` 错误。请使用以下方法。
+### macOS / Linux ✅ 聊天自动安装（推荐）
 
-### 方法一：Windows 一键安装（推荐）⭐
+在 **OpenClaw 聊天界面**中直接输入：
 
-1. Clone 仓库或下载 `windows-install.ps1`
-2. 右键 `windows-install.ps1` → **用 PowerShell 运行**
+```
+从 GitHub 安装插件：https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+```
+
+OpenClaw 会自动克隆、构建、配置并重启 Gateway，按提示填入 API Key 即可。
+
+---
+
+### Windows ⚠️ 请使用脚本安装
+
+> Windows 版 OpenClaw 通过聊天安装 GitHub 插件时存在已知问题：
+> 插件文件未能正确写入 plugins 目录，且会向 `openclaw.json` 写入不合法的 `path` 字段，
+> 导致 Gateway 无法启动。请使用以下脚本方式安装。
+
+**一键安装脚本**（推荐）：
 
 ```powershell
 git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
@@ -78,24 +90,21 @@ cd lingcloud-ai-plan-manager
 powershell -ExecutionPolicy Bypass -File windows-install.ps1
 ```
 
-脚本自动完成：插件文件安装 → 依赖安装 → 配置修复 → Gateway 重启。
+或直接右键 `windows-install.ps1` → **用 PowerShell 运行**
 
-### 方法二：Mac / Linux
+**无 git 环境**，可下载 zip 后命令行安装：
 
-```bash
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
-chmod +x install.sh && ./install.sh
+```powershell
+$url = "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/archive/refs/heads/main.zip"
+Invoke-WebRequest -Uri $url -OutFile "$env:TEMP\plugin.zip"
+Expand-Archive "$env:TEMP\plugin.zip" "$env:TEMP\plugin-src" -Force
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
+Copy-Item "$env:TEMP\plugin-src\lingcloud-ai-plan-manager-main\*" "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager\" -Recurse -Force
+cd "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"; npm install
+openclaw gateway restart
 ```
 
-### 方法三：从 Zip 包安装
-
-1. 下载 [最新 Release](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/releases) 中的 zip 包
-2. 解压到 `~/.openclaw/plugins/lingcloud-ai-plan-manager/`
-3. 在该目录运行 `npm install`（自动修复配置）
-4. 重启 OpenClaw
-
-详细说明见 [INSTALLATION.md](INSTALLATION.md)。
+详细说明及故障排查见 [INSTALLATION.md](INSTALLATION.md)。
 
 ---
 

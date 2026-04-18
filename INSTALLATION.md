@@ -8,10 +8,9 @@
 
 ### 📋 目录
 1. [前置要求](#前置要求)
-2. [安装方法](#安装方法)
-   - [方法一：Windows 一键安装（推荐）](#方法一windows-一键安装推荐)
-   - [方法二：Mac / Linux 手动安装](#方法二mac--linux-手动安装)
-   - [方法三：从 Zip 包安装](#方法三从-zip-包安装)
+2. [按系统选择安装方式](#按系统选择安装方式)
+   - [macOS / Linux（推荐：聊天自动安装）](#macos--linux推荐聊天自动安装)
+   - [Windows（推荐：脚本安装）](#windows推荐脚本安装)
 3. [配置 API Key](#配置-api-key)
 4. [验证安装](#验证安装)
 5. [故障排查](#故障排查)
@@ -27,20 +26,53 @@
 ✅ **AI 计划管理系统**后端服务正在运行  
 ✅ 有效的 **API Key**（从后端系统获取）
 
-> ⚠️ **注意**：请勿通过 OpenClaw 聊天界面的"自动安装"功能安装本插件。
-> 该功能只写入配置记录，不会真正将插件文件放到正确目录，会导致
-> `plugin not found` 或 `Unrecognized key: "path"` 错误。
-> 请按以下方法手动安装。
+---
+
+### 按系统选择安装方式
+
+#### macOS / Linux（推荐：聊天自动安装）
+
+在 **OpenClaw 聊天界面**中输入：
+
+```
+从 GitHub 安装插件：https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+```
+
+OpenClaw 会自动完成：
+- ✅ 克隆插件仓库到本地
+- ✅ 安装 npm 依赖（自动触发 postinstall 配置修复）
+- ✅ 构建插件
+- ✅ 配置 `openclaw.json`
+- ✅ 重启 Gateway
+
+安装完成后按提示配置 API Key，即可开始使用 🎉
+
+> 如果聊天安装失败，也可以手动安装：
+> ```bash
+> git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
+> cd lingcloud-ai-plan-manager
+> chmod +x install.sh && ./install.sh
+> ```
 
 ---
 
-### 安装方法
+#### Windows（推荐：脚本安装）
 
-#### 方法一：Windows 一键安装（推荐）⭐
+> ⚠️ **为什么 Windows 不能用聊天安装？**
+>
+> OpenClaw 在 Windows 上通过聊天方式安装 GitHub 插件时，存在以下已知问题：
+> - 插件文件未能正确复制到 `%USERPROFILE%\.openclaw\plugins\` 目录
+> - `openclaw.json` 中写入了不合法的 `path` 字段（仅 Windows 版本存在此行为），
+>   导致 Gateway 启动时报 `Unrecognized key: "path"` 错误
+>
+> 这是 Windows 版 OpenClaw 自身的行为差异，与插件本身无关。
+> 请使用以下脚本方式安装。
 
-**步骤 1**：下载安装脚本
+**方法一：一键安装脚本（最简单）⭐**
 
-从本仓库下载 `windows-install.ps1`，或直接 clone 整个仓库：
+**步骤 1**：克隆仓库（需要安装 git）
+
+打开 **PowerShell** 或 **命令提示符**：
 
 ```powershell
 git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
@@ -48,76 +80,40 @@ cd lingcloud-ai-plan-manager
 ```
 
 **步骤 2**：运行安装脚本
-
-右键 `windows-install.ps1` → **用 PowerShell 运行**
-
-或在 PowerShell 中执行：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File windows-install.ps1
 ```
 
-脚本会自动完成：
-- ✅ 将插件文件克隆/下载到 `~\.openclaw\plugins\lingcloud-ai-plan-manager\`
-- ✅ 运行 `npm install` 安装依赖
-- ✅ 修复 `openclaw.json`（正确配置 `plugins.load.paths`）
+或直接右键 `windows-install.ps1` → **用 PowerShell 运行**
+
+脚本自动完成：
+- ✅ 将插件文件安装到 `%USERPROFILE%\.openclaw\plugins\lingcloud-ai-plan-manager\`
+- ✅ 运行 `npm install`，触发自动配置修复
+- ✅ 正确配置 `openclaw.json`（`plugins.load.paths`）
 - ✅ 重启 OpenClaw Gateway
 
-**步骤 3**：配置 API Key（见下文）
+**方法二：命令行手动安装**
 
-完成！🎉
+如果没有安装 git，可以下载 zip 包手动安装：
 
----
+```powershell
+# 1. 创建插件目录
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
 
-#### 方法二：Mac / Linux 手动安装
+# 2. 下载并解压（PowerShell 5.1+）
+$url = "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/archive/refs/heads/main.zip"
+$tmp = "$env:TEMP\lingcloud-plugin.zip"
+Invoke-WebRequest -Uri $url -OutFile $tmp
+Expand-Archive -Path $tmp -DestinationPath "$env:TEMP\lingcloud-src" -Force
+Copy-Item "$env:TEMP\lingcloud-src\lingcloud-ai-plan-manager-main\*" `
+    "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager\" -Recurse -Force
 
-**步骤 1**：克隆仓库
-
-```bash
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
-```
-
-**步骤 2**：运行安装脚本
-
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-脚本会自动：
-- ✅ 将插件文件复制到 `~/.openclaw/plugins/lingcloud-ai-plan-manager/`
-- ✅ 运行 `npm install` 安装依赖并触发自动配置
-- ✅ 修复 `openclaw.json`
-- ✅ 重启 Gateway
-
----
-
-#### 方法三：从 Zip 包安装
-
-**步骤 1**：下载 zip 包
-
-从 [Releases 页面](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/releases) 下载最新的
-`lingcloud-ai-plan-manager-x.x.x-clawhub.zip`。
-
-**步骤 2**：解压到插件目录
-
-将 zip 解压到：
-- **Windows**：`C:\Users\<你的用户名>\.openclaw\plugins\lingcloud-ai-plan-manager\`
-- **Mac/Linux**：`~/.openclaw/plugins/lingcloud-ai-plan-manager/`
-
-**步骤 3**：安装依赖
-
-```bash
-cd ~/.openclaw/plugins/lingcloud-ai-plan-manager
+# 3. 安装依赖（自动修复配置）
+cd "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
 npm install
-```
 
-`npm install` 会自动触发 `postinstall` 脚本，完成 `openclaw.json` 的配置修复。
-
-**步骤 4**：重启 OpenClaw
-
-```bash
+# 4. 重启 Gateway
 openclaw gateway restart
 ```
 
@@ -125,29 +121,20 @@ openclaw gateway restart
 
 ### 配置 API Key
 
-#### 获取 API Key
-
-1. 打开你的 **AI 计划管理系统** Web 界面
-2. 登录你的账户
-3. 导航到 **设置 → API 管理**
-4. 点击 **创建新的 API Key**
-5. **复制** 生成的 API Key（重要：妥善保存，只显示一次！）
-
-#### 方式 1：手动编辑配置文件（推荐）
-
-编辑 **`~/.openclaw/openclaw.json`**，找到插件条目并填入 API Key：
+安装完成后，编辑 `%USERPROFILE%\.openclaw\openclaw.json`（Windows）或
+`~/.openclaw/openclaw.json`（macOS/Linux），找到插件条目填入 API Key：
 
 ```json
 {
   "plugins": {
     "load": {
-      "paths": ["C:\\Users\\你的用户名\\.openclaw\\plugins\\lingcloud-ai-plan-manager"]
+      "paths": ["插件目录的绝对路径"]
     },
     "entries": {
       "@feixuelingcloud/lingcloud-ai-plan-manager": {
         "enabled": true,
         "config": {
-          "apiKey": "在这里填入你的API Key",
+          "apiKey": "在这里填入你的 API Key",
           "apiBase": "https://plan.lingcloudai.com/api"
         }
       }
@@ -156,83 +143,69 @@ openclaw gateway restart
 }
 ```
 
-**保存后重启 OpenClaw。**
+> macOS/Linux 聊天安装后，也可以直接在 OpenClaw 中说：
+> ```
+> 请配置 lingcloud-ai-plan-manager 的 API Key: YOUR_API_KEY_HERE
+> ```
 
-#### 方式 2：通过 OpenClaw 聊天配置
-
-在 OpenClaw 聊天界面中输入：
-
-```
-请配置 lingcloud-ai-plan-manager 的 API Key: YOUR_API_KEY_HERE
-```
+保存后重启 OpenClaw。
 
 ---
 
 ### 验证安装
 
-在 OpenClaw 聊天中输入：
+在 OpenClaw 中输入：
 
 ```
 告诉我本周的计划
 ```
 
-如果插件正常工作，你会看到计划列表或提示创建新计划。
+看到计划列表或提示创建新计划即表示安装成功 🎉
 
 ---
 
 ### 故障排查
 
-#### 问题 1：`Unrecognized key: "path"`
+#### Windows：`Unrecognized key: "path"`
 
-**原因**：OpenClaw 将 `path` 错误地写入了 `plugins.entries`。
+**原因**：Windows 版 OpenClaw 将 `path` 字段错误写入了 `plugins.entries`。
 
-**解决**：
-- Windows：运行 `fix-config.bat`（双击即可）
-- Mac/Linux：运行 `bash fix-config.sh`
+**解决**：运行 `fix-config.bat`（双击即可），它会自动修复配置并重新安装插件文件。
 
-#### 问题 2：`plugin not found (stale config entry)`
+#### Windows / macOS / Linux：`plugin not found`
 
-**原因**：配置记录存在但插件文件不在对应目录。
+**原因**：`openclaw.json` 有插件记录但文件不在对应目录。
 
 **解决**：
-- Windows：运行 `fix-config.bat`（它会自动安装文件并修复配置）
-- Mac/Linux：运行 `bash install.sh`
+- Windows：运行 `fix-config.bat`
+- macOS/Linux：重新通过聊天安装，或运行 `bash install.sh`
 
-#### 问题 3：`openclaw.json` 中没有 `plugins.load.paths`
+#### macOS/Linux：聊天安装后工具不可用
 
-**解决**：手动添加：
+**原因**：构建未完成或 Gateway 未重启。
 
-```json
-{
-  "plugins": {
-    "load": {
-      "paths": ["/absolute/path/to/lingcloud-ai-plan-manager"]
-    }
-  }
-}
-```
-
-#### 问题 4：TypeScript 编译错误
+**解决**：
 
 ```bash
-rm -rf dist/
-npm run build
-```
-
-#### 问题 5：插件加载但工具不可用
-
-```bash
-rm -rf dist/
+cd ~/.openclaw/plugins/lingcloud-ai-plan-manager
 npm run build
 openclaw gateway restart
+```
+
+#### 所有平台：API 连接失败
+
+检查 `apiKey` 是否正确，以及 `apiBase` 是否可访问：
+
+```bash
+curl https://plan.lingcloudai.com/api/health
 ```
 
 ---
 
 ### 获取帮助
 
-1. **提交 Issue**：[GitHub Issues](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues)
-2. **联系支持**：yemihu@lingcloud.ai
+- **GitHub Issues**：[提交问题](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues)
+- **Email**：yemihu@lingcloud.ai
 
 ---
 
@@ -240,10 +213,9 @@ openclaw gateway restart
 
 ### 📋 Table of Contents
 1. [Prerequisites](#prerequisites)
-2. [Installation Methods](#installation-methods)
-   - [Method 1: Windows One-Click Install (Recommended)](#method-1-windows-one-click-install-recommended)
-   - [Method 2: Mac / Linux Manual Install](#method-2-mac--linux-manual-install)
-   - [Method 3: Install from Zip](#method-3-install-from-zip)
+2. [Choose Installation Method by OS](#choose-installation-method-by-os)
+   - [macOS / Linux (Recommended: Chat Auto-Install)](#macos--linux-recommended-chat-auto-install)
+   - [Windows (Recommended: Script Install)](#windows-recommended-script-install)
 3. [Configure API Key](#configure-api-key-1)
 4. [Verify Installation](#verify-installation-1)
 5. [Troubleshooting](#troubleshooting-1)
@@ -252,91 +224,82 @@ openclaw gateway restart
 
 ### Prerequisites
 
-Before installing the plugin, make sure you have:
-
 ✅ **Node.js** >= 18.0.0  
 ✅ **OpenClaw** client installed  
 ✅ **AI Plan Manager** backend service running  
-✅ Valid **API Key** (obtained from backend system)
-
-> ⚠️ **Important**: Do NOT use OpenClaw's chat "auto-install" feature for this plugin.
-> It only writes a config record but never places actual plugin files in the correct directory,
-> resulting in `plugin not found` or `Unrecognized key: "path"` errors.
-> Use one of the methods below instead.
+✅ Valid **API Key**
 
 ---
 
-### Installation Methods
+### Choose Installation Method by OS
 
-#### Method 1: Windows One-Click Install (Recommended) ⭐
+#### macOS / Linux (Recommended: Chat Auto-Install)
 
-**Step 1**: Download the install script
+In the **OpenClaw chat interface**, type:
 
-Clone the repository or download `windows-install.ps1`:
+```
+Install plugin from GitHub: https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+```
+
+OpenClaw will automatically:
+- ✅ Clone the plugin repository
+- ✅ Install npm dependencies (postinstall auto-fixes config)
+- ✅ Build the plugin
+- ✅ Configure `openclaw.json`
+- ✅ Restart the Gateway
+
+Configure your API Key when prompted. Done! 🎉
+
+> If chat install fails, use manual install:
+> ```bash
+> git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
+> cd lingcloud-ai-plan-manager
+> chmod +x install.sh && ./install.sh
+> ```
+
+---
+
+#### Windows (Recommended: Script Install)
+
+> ⚠️ **Why can't Windows use chat install?**
+>
+> OpenClaw on Windows has known issues when installing GitHub plugins via chat:
+> - Plugin files are not properly copied to `%USERPROFILE%\.openclaw\plugins\`
+> - An invalid `path` field is written to `openclaw.json` (Windows-only behavior),
+>   causing the Gateway to fail with `Unrecognized key: "path"`
+>
+> This is a behavior difference in the Windows version of OpenClaw, not a plugin issue.
+> Use the script method below instead.
+
+**Method 1: One-Click Install Script (Easiest) ⭐**
+
+Open **PowerShell**:
 
 ```powershell
 git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
 cd lingcloud-ai-plan-manager
-```
-
-**Step 2**: Run the install script
-
-Right-click `windows-install.ps1` → **Run with PowerShell**
-
-Or in PowerShell:
-
-```powershell
 powershell -ExecutionPolicy Bypass -File windows-install.ps1
 ```
 
-The script automatically:
-- ✅ Clones/downloads plugin files to `~\.openclaw\plugins\lingcloud-ai-plan-manager\`
-- ✅ Runs `npm install`
-- ✅ Fixes `openclaw.json` (sets `plugins.load.paths` correctly)
-- ✅ Restarts OpenClaw Gateway
+Or right-click `windows-install.ps1` → **Run with PowerShell**
 
-**Step 3**: Configure your API Key (see below)
+**Method 2: Manual Command Line**
 
-Done! 🎉
+```powershell
+# Download and extract
+$url = "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/archive/refs/heads/main.zip"
+$tmp = "$env:TEMP\lingcloud-plugin.zip"
+Invoke-WebRequest -Uri $url -OutFile $tmp
+Expand-Archive -Path $tmp -DestinationPath "$env:TEMP\lingcloud-src" -Force
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
+Copy-Item "$env:TEMP\lingcloud-src\lingcloud-ai-plan-manager-main\*" `
+    "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager\" -Recurse -Force
 
----
-
-#### Method 2: Mac / Linux Manual Install
-
-**Step 1**: Clone the repository
-
-```bash
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
-```
-
-**Step 2**: Run the install script
-
-```bash
-chmod +x install.sh
-./install.sh
-```
-
----
-
-#### Method 3: Install from Zip
-
-**Step 1**: Download the zip from [Releases](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/releases).
-
-**Step 2**: Extract to:
-- **Windows**: `C:\Users\<username>\.openclaw\plugins\lingcloud-ai-plan-manager\`
-- **Mac/Linux**: `~/.openclaw/plugins/lingcloud-ai-plan-manager/`
-
-**Step 3**: Install dependencies
-
-```bash
-cd ~/.openclaw/plugins/lingcloud-ai-plan-manager
+# Install dependencies (auto-fixes config)
+cd "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
 npm install
-```
 
-**Step 4**: Restart OpenClaw
-
-```bash
+# Restart Gateway
 openclaw gateway restart
 ```
 
@@ -344,14 +307,11 @@ openclaw gateway restart
 
 ### Configure API Key
 
-Edit **`~/.openclaw/openclaw.json`**:
+Edit `~/.openclaw/openclaw.json`:
 
 ```json
 {
   "plugins": {
-    "load": {
-      "paths": ["/absolute/path/to/lingcloud-ai-plan-manager"]
-    },
     "entries": {
       "@feixuelingcloud/lingcloud-ai-plan-manager": {
         "enabled": true,
@@ -365,7 +325,7 @@ Edit **`~/.openclaw/openclaw.json`**:
 }
 ```
 
-**Save and restart OpenClaw.**
+Save and restart OpenClaw.
 
 ---
 
@@ -381,26 +341,19 @@ Show me this week's plans
 
 ### Troubleshooting
 
-#### Issue 1: `Unrecognized key: "path"`
+#### Windows: `Unrecognized key: "path"`
 
-**Cause**: OpenClaw incorrectly wrote `path` into `plugins.entries`.
+Run `fix-config.bat` (double-click) — it automatically fixes the config and reinstalls plugin files.
 
-**Fix**:
+#### `plugin not found`
+
 - Windows: Run `fix-config.bat`
-- Mac/Linux: Run `bash fix-config.sh`
+- macOS/Linux: Reinstall via chat or run `bash install.sh`
 
-#### Issue 2: `plugin not found (stale config entry)`
-
-**Cause**: Config entry exists but plugin files are missing from the directory.
-
-**Fix**:
-- Windows: Run `fix-config.bat` (installs files and fixes config)
-- Mac/Linux: Run `bash install.sh`
-
-#### Issue 3: Plugin loads but tools unavailable
+#### Plugin loads but tools unavailable
 
 ```bash
-rm -rf dist/
+cd ~/.openclaw/plugins/lingcloud-ai-plan-manager
 npm run build
 openclaw gateway restart
 ```
@@ -411,8 +364,6 @@ openclaw gateway restart
 
 - **GitHub Issues**: [Submit an Issue](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues)
 - **Email**: yemihu@lingcloud.ai
-
----
 
 <div align="center">
 
