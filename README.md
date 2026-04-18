@@ -64,7 +64,9 @@
 
 ## 🚀 快速开始
 
-### macOS / Linux ✅ 聊天自动安装（推荐）
+### macOS / Linux
+
+**方式一：OpenClaw 聊天自动安装（推荐）⭐**
 
 在 **OpenClaw 聊天界面**中直接输入：
 
@@ -73,6 +75,14 @@
 ```
 
 OpenClaw 会自动克隆、构建、配置并重启 Gateway，按提示填入 API Key 即可。
+
+**方式二：命令行安装（备选）**
+
+```bash
+git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
+cd lingcloud-ai-plan-manager
+chmod +x install.sh && ./install.sh
+```
 
 ---
 
