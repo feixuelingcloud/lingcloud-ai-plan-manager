@@ -30,6 +30,7 @@ const requiredEntries = [
   "openclaw.plugin.json",
   "claw-hub.json",
   "dist",
+  "scripts",
 ];
 
 const optionalEntries = [
@@ -38,6 +39,8 @@ const optionalEntries = [
   "INSTALLATION.md",
   "LICENSE",
   "skills",
+  "fix-config.bat",
+  "fix-config.sh",
 ];
 
 for (const entry of requiredEntries) {
