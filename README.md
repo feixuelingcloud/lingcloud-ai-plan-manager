@@ -64,95 +64,38 @@
 
 ## 🚀 快速开始
 
-### 方法一：通过 OpenClaw 聊天界面自动安装（推荐）⭐
+> ⚠️ **重要**：请勿使用 OpenClaw 聊天界面的"自动安装"功能，该方式只写配置记录
+> 而不安装文件，会导致 `plugin not found` 错误。请使用以下方法。
 
-这是最简单的安装方式！只需在 **OpenClaw 聊天界面**中输入以下任意一句话：
+### 方法一：Windows 一键安装（推荐）⭐
 
-```
-请帮我安装 lingcloud-ai-plan-manager 插件
-```
+1. Clone 仓库或下载 `windows-install.ps1`
+2. 右键 `windows-install.ps1` → **用 PowerShell 运行**
 
-或者：
-
-```
-从 GitHub 安装插件: https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
-```
-
-或者：
-
-```
-安装计划管理插件
+```powershell
+git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
+cd lingcloud-ai-plan-manager
+powershell -ExecutionPolicy Bypass -File windows-install.ps1
 ```
 
-**OpenClaw 会自动帮你完成：**
-1. ✅ 克隆插件仓库
-2. ✅ 安装依赖
-3. ✅ 构建插件
-4. ✅ 配置插件路径
+脚本自动完成：插件文件安装 → 依赖安装 → 配置修复 → Gateway 重启。
 
-**然后你只需要：**
-- 按照提示配置你的 API Key
-- 开始使用！
+### 方法二：Mac / Linux
 
-### 方法二：手动安装
+```bash
+git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
+cd lingcloud-ai-plan-manager
+chmod +x install.sh && ./install.sh
+```
 
-#### 前置要求
-- Node.js >= 18
-- OpenClaw 客户端
-- 一个运行中的后端 API 服务
+### 方法三：从 Zip 包安装
 
-#### 安装步骤
+1. 下载 [最新 Release](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/releases) 中的 zip 包
+2. 解压到 `~/.openclaw/plugins/lingcloud-ai-plan-manager/`
+3. 在该目录运行 `npm install`（自动修复配置）
+4. 重启 OpenClaw
 
-1. **克隆仓库**
-   ```bash
-   git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-   cd lingcloud-ai-plan-manager
-   ```
-
-2. **安装依赖**
-   ```bash
-   npm install
-   ```
-
-3. **构建插件**
-   ```bash
-   npm run build
-   ```
-
-4. **在 OpenClaw 中配置插件**
-
-   方式 A - 使用 OpenClaw CLI：
-   ```bash
-   openclaw plugins install -l ./lingcloud-ai-plan-manager
-   ```
-
-   方式 B - 手动编辑（**请勿**把 `path`、`name` 写在 `plugins.entries` 下，否则网关会报 `Unrecognized key: "path"` 并拒绝启动）
-
-   配置文件：**`~/.openclaw/openclaw.json`**（Windows：`%USERPROFILE%\.openclaw\openclaw.json`）
-
-   - 推荐仍用 CLI：`openclaw plugins install -l ./lingcloud-ai-plan-manager`，安装记录由 `plugins.installs` 维护。
-   - 若必须从源码目录加载插件，使用官方字段 `plugins.load.paths`（绝对路径）+ 仅在 `plugins.entries` 中写 `enabled` / `config`：
-
-   ```json
-   {
-     "plugins": {
-       "load": {
-         "paths": ["/absolute/path/to/lingcloud-ai-plan-manager"]
-       },
-       "entries": {
-         "@feixuelingcloud/lingcloud-ai-plan-manager": {
-           "enabled": true,
-           "config": {
-             "apiKey": "YOUR_API_KEY",
-             "apiBase": "https://plan.lingcloudai.com/api"
-           }
-         }
-       }
-     }
-   }
-   ```
-
-5. **重启 OpenClaw**
+详细说明见 [INSTALLATION.md](INSTALLATION.md)。
 
 ---
 
