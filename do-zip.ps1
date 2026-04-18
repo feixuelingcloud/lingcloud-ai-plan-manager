@@ -10,7 +10,7 @@ New-Item -ItemType Directory -Force -Path $release | Out-Null
 if (Test-Path $out) { Remove-Item $out -Force }
 
 $required = @('package.json','package-lock.json','openclaw.plugin.json','claw-hub.json','dist','scripts')
-$optional = @('README.md','CHANGELOG.md','INSTALLATION.md','LICENSE','skills','fix-config.bat','fix-config.sh')
+$optional = @('README.md','CHANGELOG.md','INSTALLATION.md','LICENSE','skills','fix-config.bat','fix-config.sh','windows-install.ps1','macOS安装指南.md','macOS快速安装.md')
 
 foreach ($e in $required) {
     $src = Join-Path $root $e

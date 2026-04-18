@@ -42,6 +42,8 @@ const optionalEntries = [
   "fix-config.bat",
   "fix-config.sh",
   "windows-install.ps1",
+  "macOS安装指南.md",
+  "macOS快速安装.md",
 ];
 
 for (const entry of requiredEntries) {
