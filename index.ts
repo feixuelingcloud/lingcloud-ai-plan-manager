@@ -1,5 +1,5 @@
 ﻿/**
- * AI计划管理系统 OpenClaw Plugin
+ * GotoPlan OpenClaw Plugin
  * 主入口文件
  */
 

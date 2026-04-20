@@ -2,7 +2,7 @@
   "id": "@gotoplan/manager",
   "name": "GotoPlan Manager",
   "version": "1.0.3",
-  "description": "AI计划管理系统 OpenClaw 插件",
+  "description": "GotoPlan OpenClaw 插件",
   "type": "module",
   "openclaw": {
     "extensions": ["./dist/index.js"]

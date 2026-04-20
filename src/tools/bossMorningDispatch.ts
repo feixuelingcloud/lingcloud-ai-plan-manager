@@ -195,7 +195,7 @@ export const bossMorningDispatchTool = {
           `❌ Boss 晨间调度失败:\n\n${msg}`,
           '',
           '💡 请检查:',
-          '  1. 是否已在 AI计划管理系统 中为计划指定了 AI 员工执行人',
+          '  1. 是否已在 GotoPlan 中为计划指定了 AI 员工执行人',
           '  2. 本地是否已安装 openclaw CLI',
           '  3. 网络连接是否正常'
         ].join('\n')

@@ -34,10 +34,10 @@ export const cloneAllAIStaffTool = {
           output: [
             '⚠️ **未找到"我的AI员工"数据**',
             '',
-            myStaffRes.message || '您还没有在 AI计划管理系统 中设置"我的AI员工"。',
+            myStaffRes.message || '您还没有在 GotoPlan 中设置"我的AI员工"。',
             '',
-            '💡 请先在 AI计划管理系统中操作：',
-            '  1. 打开 AI计划管理系统 → AI员工页面',
+            '💡 请先在 GotoPlan中操作：',
+            '  1. 打开 GotoPlan → AI员工页面',
             '  2. 点击员工卡片 → 点击"加入我的员工"按钮',
             '  3. 添加完成后，回到 OpenClaw 再次执行克隆'
           ].join('\n')
@@ -144,7 +144,7 @@ export const cloneAllAIStaffTool = {
           `❌ 批量克隆失败:\n\n${msg}`,
           '',
           '💡 请检查：',
-          '  1. AI计划管理系统 中是否已设置"我的AI员工"',
+          '  1. GotoPlan 中是否已设置"我的AI员工"',
           '  2. 本地是否已安装 openclaw CLI',
           '  3. API Key 是否有效'
         ].join('\n')

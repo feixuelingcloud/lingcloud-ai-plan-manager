@@ -2,7 +2,7 @@
 REM OpenClaw 插件快速安装脚本 (Windows)
 chcp 65001 >nul 2>&1
 echo ========================================
-echo   AI计划管理系统 OpenClaw 插件安装
+echo   GotoPlan OpenClaw 插件安装
 echo ========================================
 echo.
 

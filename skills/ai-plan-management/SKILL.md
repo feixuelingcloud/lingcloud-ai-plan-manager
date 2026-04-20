@@ -1,6 +1,6 @@
 ---
 name: ai_plan_management
-description: 使用AI计划管理系统工具创建、查询和管理计划。支持智能识别用户意图、自动提取参数,记忆对话上下文。
+description: 使用GotoPlan工具创建、查询和管理计划。支持智能识别用户意图、自动提取参数,记忆对话上下文。
 metadata:
   version: "1.0.1"
   author: "Lingyun"
@@ -15,7 +15,7 @@ metadata:
     # 如果在 OpenClaw 插件设置页面看到的字段名是 "apiKey"，请填写到该字段。
 ---
 
-# AI计划管理系统 Skill
+# GotoPlan Skill
 
 当用户表达以下需求时,优先调用本技能提供的工具:
 - 创建计划
