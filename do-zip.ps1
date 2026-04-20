@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 $root    = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $staging = Join-Path $root '.release\stage'
 $release = Join-Path $root 'release'
-$out     = Join-Path $release 'lingcloud-ai-plan-manager-1.0.3-clawhub.zip'
+$out     = Join-Path $release 'gotoplan-manager-1.0.3-clawhub.zip'
 
 if (Test-Path $staging) { Remove-Item $staging -Recurse -Force }
 New-Item -ItemType Directory -Force -Path $staging | Out-Null

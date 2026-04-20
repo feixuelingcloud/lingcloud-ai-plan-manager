@@ -20,7 +20,7 @@ if (!existsSync(distIndex)) {
 }
 
 // ── 自动配置 openclaw.json ────────────────────────────────────────────────────
-const PLUGIN_ID    = "@feixuelingcloud/lingcloud-ai-plan-manager";
+const PLUGIN_ID    = "@gotoplan/manager";
 const DEFAULT_BASE = "https://plan.lingcloudai.com/api";
 const configPath   = join(homedir(), ".openclaw", "openclaw.json");
 

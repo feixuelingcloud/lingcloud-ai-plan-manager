@@ -4,9 +4,9 @@
 # 用法：右键 -> "用 PowerShell 运行"  或  powershell -ExecutionPolicy Bypass -File windows-install.ps1
 
 $ErrorActionPreference = "Stop"
-$PLUGIN_ID  = "@feixuelingcloud/lingcloud-ai-plan-manager"
-$REPO_URL   = "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git"
-$PLUGIN_DIR = Join-Path $env:USERPROFILE ".openclaw\plugins\lingcloud-ai-plan-manager"
+$PLUGIN_ID  = "@gotoplan/manager"
+$REPO_URL   = "https://github.com/feixuelingcloud/gotoplan-manager.git"
+$PLUGIN_DIR = Join-Path $env:USERPROFILE ".openclaw\plugins\gotoplan-manager"
 $CONFIG_PATH= Join-Path $env:USERPROFILE ".openclaw\openclaw.json"
 
 Write-Host ""
@@ -55,9 +55,9 @@ if (Test-Path (Join-Path $PLUGIN_DIR "package.json")) {
     } else {
         # 没有 git，下载 zip 解压
         Write-Host "      git 未安装，改用下载 zip..." -ForegroundColor Cyan
-        $zipUrl  = "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/archive/refs/heads/main.zip"
-        $tmpZip  = Join-Path $env:TEMP "lingcloud-plugin.zip"
-        $tmpDir  = Join-Path $env:TEMP "lingcloud-plugin-src"
+        $zipUrl  = "https://github.com/feixuelingcloud/gotoplan-manager/archive/refs/heads/main.zip"
+        $tmpZip  = Join-Path $env:TEMP "gotoplan-plugin.zip"
+        $tmpDir  = Join-Path $env:TEMP "gotoplan-plugin-src"
 
         Write-Host "      正在下载 $zipUrl ..." -ForegroundColor Cyan
         Invoke-WebRequest -Uri $zipUrl -OutFile $tmpZip -UseBasicParsing
@@ -65,8 +65,8 @@ if (Test-Path (Join-Path $PLUGIN_DIR "package.json")) {
         if (Test-Path $tmpDir) { Remove-Item $tmpDir -Recurse -Force }
         Expand-Archive -Path $tmpZip -DestinationPath $tmpDir -Force
 
-        # zip 解压后子目录名为 lingcloud-ai-plan-manager-main
-        $extracted = Join-Path $tmpDir "lingcloud-ai-plan-manager-main"
+        # zip 解压后子目录名为 gotoplan-manager-main
+        $extracted = Join-Path $tmpDir "gotoplan-manager-main"
         if (-not (Test-Path $extracted)) {
             $extracted = (Get-ChildItem $tmpDir -Directory | Select-Object -First 1).FullName
         }

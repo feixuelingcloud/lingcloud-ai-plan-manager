@@ -64,8 +64,8 @@ echo.
 echo [5/6] 安装插件到 OpenClaw...
 
 powershell -ExecutionPolicy Bypass -Command ^
-  "$pluginId = '@feixuelingcloud/lingcloud-ai-plan-manager';" ^
-  "$pluginDir = \"$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager\";" ^
+  "$pluginId = '@gotoplan/manager';" ^
+  "$pluginDir = \"$env:USERPROFILE\.openclaw\plugins\gotoplan-manager\";" ^
   "$configPath = \"$env:USERPROFILE\.openclaw\openclaw.json\";" ^
   "$srcDir = (Get-Location).Path;" ^
   "New-Item -ItemType Directory -Force -Path $pluginDir | Out-Null;" ^
@@ -115,7 +115,7 @@ echo.
 timeout /t 3 /nobreak >nul
 
 echo 已安装的插件:
-call openclaw plugins list | findstr "lingcloud-ai-plan-manager"
+call openclaw plugins list | findstr "gotoplan-manager"
 
 echo.
 echo 已注册的工具:

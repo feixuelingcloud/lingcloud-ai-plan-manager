@@ -1,5 +1,5 @@
 {
-  "name": "@lingcloud/ai-plan-manager",
+  "name": "@gotoplan/manager",
   "version": "1.0.3",
   "description": "A powerful OpenClaw plugin for intelligent plan and task management with AI assistance",
   "type": "module",
@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git"
+    "url": "https://github.com/feixuelingcloud/gotoplan-manager.git"
   },
   "bugs": {
-    "url": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues"
+    "url": "https://github.com/feixuelingcloud/gotoplan-manager/issues"
   },
-  "homepage": "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager#readme",
+  "homepage": "https://github.com/feixuelingcloud/gotoplan-manager#readme",
   "dependencies": {
     "@sinclair/typebox": "^0.34.28"
   },

@@ -51,9 +51,9 @@ echo "✅ 编译完成"
 echo ""
 echo "[5/6] 安装插件到 OpenClaw..."
 
-PLUGIN_ID="@feixuelingcloud/lingcloud-ai-plan-manager"
+PLUGIN_ID="@gotoplan/manager"
 OPENCLAW_DIR="$HOME/.openclaw"
-PLUGIN_INSTALL_DIR="$OPENCLAW_DIR/plugins/lingcloud-ai-plan-manager"
+PLUGIN_INSTALL_DIR="$OPENCLAW_DIR/plugins/gotoplan-manager"
 OPENCLAW_CONFIG="$OPENCLAW_DIR/openclaw.json"
 
 # 拷贝插件文件到 openclaw plugins 目录
@@ -119,7 +119,7 @@ echo ""
 sleep 3
 
 echo "已安装的插件:"
-openclaw plugins list | grep "lingcloud-ai-plan-manager" || echo "⚠️  插件未出现在列表中"
+openclaw plugins list | grep "gotoplan-manager" || echo "⚠️  插件未出现在列表中"
 
 echo ""
 echo "已注册的工具:"

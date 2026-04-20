@@ -1,6 +1,6 @@
 {
-  "id": "@feixuelingcloud/lingcloud-ai-plan-manager",
-  "name": "AI Plan Manager",
+  "id": "@gotoplan/manager",
+  "name": "GotoPlan Manager",
   "version": "1.0.3",
   "description": "AI计划管理系统 OpenClaw 插件",
   "type": "module",

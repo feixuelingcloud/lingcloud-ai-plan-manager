@@ -5,7 +5,7 @@
 
 set -e
 
-PLUGIN_ID="@feixuelingcloud/lingcloud-ai-plan-manager"
+PLUGIN_ID="@gotoplan/manager"
 OPENCLAW_CONFIG="$HOME/.openclaw/openclaw.json"
 
 echo "========================================"

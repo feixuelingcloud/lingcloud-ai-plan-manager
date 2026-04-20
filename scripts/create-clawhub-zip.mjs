@@ -18,11 +18,10 @@ const packageJsonPath = path.join(projectRoot, "package.json");
 const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8"));
 const pluginManifestPath = path.join(projectRoot, "openclaw.plugin.json");
 const pluginManifest = JSON.parse(readFileSync(pluginManifestPath, "utf8"));
-/** Zip basename: strip npm scope from plugin id (e.g. @feixuelingcloud/lingcloud-ai-plan-manager → lingcloud-ai-plan-manager) */
-const zipSlug = String(pluginManifest.id || packageJson.name).replace(
-  /^@[^/]+\//,
-  "",
-);
+/** Zip basename: convert scoped id to slug (e.g. @gotoplan/manager → gotoplan-manager) */
+const zipSlug = String(pluginManifest.id || packageJson.name)
+  .replace(/^@/, "")
+  .replace("/", "-");
 
 const requiredEntries = [
   "package.json",
