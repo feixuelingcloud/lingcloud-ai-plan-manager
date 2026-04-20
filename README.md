@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager)
+[![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/feixuelingcloud/gotoplan-manager)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Plugin-orange.svg)](https://openclaw.ai)
 
@@ -71,7 +71,7 @@
 在 **OpenClaw 聊天界面**中直接输入：
 
 ```
-从 GitHub 安装插件：https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+从 GitHub 安装插件：https://github.com/feixuelingcloud/gotoplan-manager
 ```
 
 OpenClaw 会自动克隆、构建、配置并重启 Gateway，按提示填入 API Key 即可。
@@ -79,8 +79,8 @@ OpenClaw 会自动克隆、构建、配置并重启 Gateway，按提示填入 AP
 **方式二：命令行安装（备选）**
 
 ```bash
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
+git clone https://github.com/feixuelingcloud/gotoplan-manager.git
+cd gotoplan-manager
 chmod +x install.sh && ./install.sh
 ```
 
@@ -95,8 +95,8 @@ chmod +x install.sh && ./install.sh
 **一键安装脚本**（推荐）：
 
 ```powershell
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
+git clone https://github.com/feixuelingcloud/gotoplan-manager.git
+cd gotoplan-manager
 powershell -ExecutionPolicy Bypass -File windows-install.ps1
 ```
 
@@ -105,12 +105,12 @@ powershell -ExecutionPolicy Bypass -File windows-install.ps1
 **无 git 环境**，可下载 zip 后命令行安装：
 
 ```powershell
-$url = "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/archive/refs/heads/main.zip"
+$url = "https://github.com/feixuelingcloud/gotoplan-manager/archive/refs/heads/main.zip"
 Invoke-WebRequest -Uri $url -OutFile "$env:TEMP\plugin.zip"
 Expand-Archive "$env:TEMP\plugin.zip" "$env:TEMP\plugin-src" -Force
-New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
-Copy-Item "$env:TEMP\plugin-src\lingcloud-ai-plan-manager-main\*" "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager\" -Recurse -Force
-cd "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"; npm install
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager"
+Copy-Item "$env:TEMP\plugin-src\gotoplan-manager-main\*" "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager\" -Recurse -Force
+cd "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager"; npm install
 openclaw gateway restart
 ```
 
@@ -136,7 +136,7 @@ openclaw gateway restart
 在 OpenClaw 聊天界面中输入：
 
 ```
-请配置 lingcloud-ai-plan-manager 插件的 API Key: YOUR_API_KEY_HERE
+请配置 gotoplan-manager 插件的 API Key: YOUR_API_KEY_HERE
 ```
 
 OpenClaw 会自动帮你更新配置！
@@ -149,7 +149,7 @@ OpenClaw 会自动帮你更新配置！
 {
   "plugins": {
     "entries": {
-      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+      "@gotoplan/manager": {
         "enabled": true,
         "config": {
           "apiKey": "YOUR_API_KEY",
@@ -382,7 +382,7 @@ AI 会帮你生成计划草稿，确认后会自动创建。
 ## 📁 项目结构
 
 ```
-lingcloud-ai-plan-manager/
+gotoplan-manager/
 ├── src/
 │   ├── client/              # API 客户端
 │   │   └── apiClient.ts
@@ -468,7 +468,7 @@ DEBUG=true npm run dev
 - 安装说明改为当前 OpenClaw 的 `plugins.entries` / `openclaw.json`，避免在 `entries` 中误写 `path` 导致网关 `Unrecognized key` 启动失败
 - 配置示例统一使用 `apiBase`（与 `openclaw.plugin.json` 一致）
 - `loadConfig` 兼容旧文档中的 `apiBaseUrl` 别名
-- ClawHub 打包 zip 文件名改为 `lingcloud-ai-plan-manager-<version>-clawhub.zip`（避免 npm scope 中的 `/` 在 Windows 下非法）
+- ClawHub 打包 zip 文件名改为 `gotoplan-manager-<version>-clawhub.zip`（避免 npm scope 中的 `/` 在 Windows 下非法）
 
 ### v1.0.2 (2026-04-15)
 
@@ -512,7 +512,7 @@ DEBUG=true npm run dev
 
 ### 报告问题
 
-如果你发现了 bug 或有功能建议，请在 [GitHub Issues](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues) 中提交。
+如果你发现了 bug 或有功能建议，请在 [GitHub Issues](https://github.com/feixuelingcloud/gotoplan-manager/issues) 中提交。
 
 ---
 
@@ -543,12 +543,12 @@ DEBUG=true npm run dev
 
 **A:** 在 OpenClaw 聊天界面中输入：
 ```
-更新 lingcloud-ai-plan-manager 插件
+更新 gotoplan-manager 插件
 ```
 
 或手动执行：
 ```bash
-cd lingcloud-ai-plan-manager
+cd gotoplan-manager
 git pull
 npm install
 npm run build
@@ -565,7 +565,7 @@ npm run build
 
 **A:** 在 OpenClaw 聊天界面中输入：
 ```
-卸载 lingcloud-ai-plan-manager 插件
+卸载 gotoplan-manager 插件
 ```
 
 ---
@@ -574,7 +574,7 @@ npm run build
 
 如果这个项目对你有帮助，请给我们一个 ⭐️ Star！
 
-[![Star History Chart](https://api.star-history.com/svg?repos=feixuelingcloud/lingcloud-ai-plan-manager&type=Date)](https://star-history.com/#feixuelingcloud/lingcloud-ai-plan-manager&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=feixuelingcloud/gotoplan-manager&type=Date)](https://star-history.com/#feixuelingcloud/gotoplan-manager&Date)
 
 ---
 

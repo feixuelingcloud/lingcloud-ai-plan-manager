@@ -5,7 +5,7 @@
 打开 **OpenClaw 聊天界面**，输入：
 
 ```
-从 GitHub 安装插件：https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+从 GitHub 安装插件：https://github.com/feixuelingcloud/gotoplan-manager
 ```
 
 OpenClaw 会自动完成克隆、构建、配置全流程，按提示填入 API Key 即可 🎉
@@ -17,8 +17,8 @@ OpenClaw 会自动完成克隆、构建、配置全流程，按提示填入 API 
 如果聊天安装失败，打开终端（`Command + 空格` → 输入 `Terminal`）：
 
 ```bash
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
+git clone https://github.com/feixuelingcloud/gotoplan-manager.git
+cd gotoplan-manager
 chmod +x install.sh && ./install.sh
 ```
 
@@ -32,7 +32,7 @@ chmod +x install.sh && ./install.sh
 {
   "plugins": {
     "entries": {
-      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+      "@gotoplan/manager": {
         "enabled": true,
         "config": {
           "apiKey": "在这里填入你的 API Key",
@@ -47,7 +47,7 @@ chmod +x install.sh && ./install.sh
 或在 OpenClaw 聊天中直接说：
 
 ```
-请配置 lingcloud-ai-plan-manager 的 API Key: YOUR_API_KEY_HERE
+请配置 gotoplan-manager 的 API Key: YOUR_API_KEY_HERE
 ```
 
 ---
@@ -59,4 +59,4 @@ chmod +x install.sh && ./install.sh
 | `plugin not found` | 重新聊天安装，或运行 `bash install.sh` |
 | `openclaw: command not found` | 检查 OpenClaw 是否加入 PATH，见 [macOS安装指南.md](macOS安装指南.md) |
 | `node: command not found` | 安装 Node.js >= 18：https://nodejs.org |
-| 工具不可用 | `cd ~/.openclaw/plugins/lingcloud-ai-plan-manager && npm run build && openclaw gateway restart` |
+| 工具不可用 | `cd ~/.openclaw/plugins/gotoplan-manager && npm run build && openclaw gateway restart` |

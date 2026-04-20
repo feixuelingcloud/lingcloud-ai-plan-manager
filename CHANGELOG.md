@@ -49,7 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `loadConfig`: accept legacy `apiBaseUrl` as alias for `apiBase`.
 
 ### Changed
-- `scripts/create-clawhub-zip.mjs`: zip output name `lingcloud-ai-plan-manager-<version>-clawhub.zip` (from plugin id), safe on Windows.
+- `scripts/create-clawhub-zip.mjs`: zip output name `gotoplan-manager-<version>-clawhub.zip` (from plugin id), safe on Windows.
 
 ## [Unreleased]
 
@@ -68,12 +68,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Via OpenClaw Chat:**
 ```
-Update lingcloud-ai-plan-manager plugin
+Update gotoplan-manager plugin
 ```
 
 **Manual Update:**
 ```bash
-cd lingcloud-ai-plan-manager
+cd gotoplan-manager
 git pull
 npm install
 npm run build
@@ -89,4 +89,4 @@ npm run build
 
 ---
 
-For more details, visit the [GitHub repository](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager).
+For more details, visit the [GitHub repository](https://github.com/feixuelingcloud/gotoplan-manager).

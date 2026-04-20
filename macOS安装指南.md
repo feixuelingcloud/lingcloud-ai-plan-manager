@@ -5,11 +5,11 @@
 在 **OpenClaw 聊天界面**中输入：
 
 ```
-从 GitHub 安装插件：https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+从 GitHub 安装插件：https://github.com/feixuelingcloud/gotoplan-manager
 ```
 
 OpenClaw 会自动完成：
-- ✅ 克隆插件仓库到 `~/.openclaw/plugins/lingcloud-ai-plan-manager/`
+- ✅ 克隆插件仓库到 `~/.openclaw/plugins/gotoplan-manager/`
 - ✅ 运行 `npm install`（自动触发 postinstall 配置修复）
 - ✅ 构建插件
 - ✅ 配置 `openclaw.json`
@@ -28,8 +28,8 @@ OpenClaw 会自动完成：
 打开终端（`Command + 空格` → `Terminal`）：
 
 ```bash
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
+git clone https://github.com/feixuelingcloud/gotoplan-manager.git
+cd gotoplan-manager
 ```
 
 ### 步骤 2：运行安装脚本
@@ -46,7 +46,7 @@ chmod +x install.sh
 #### 方式 1：通过 OpenClaw 聊天（最简单）
 
 ```
-请配置 lingcloud-ai-plan-manager 的 API Key: YOUR_API_KEY_HERE
+请配置 gotoplan-manager 的 API Key: YOUR_API_KEY_HERE
 ```
 
 #### 方式 2：手动编辑配置文件
@@ -61,7 +61,7 @@ nano ~/.openclaw/openclaw.json
 {
   "plugins": {
     "entries": {
-      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+      "@gotoplan/manager": {
         "enabled": true,
         "config": {
           "apiKey": "在这里填入你的 API Key",
@@ -129,7 +129,7 @@ nvm install 22 && nvm use 22
 ### 插件加载但工具不可用
 
 ```bash
-cd ~/.openclaw/plugins/lingcloud-ai-plan-manager
+cd ~/.openclaw/plugins/gotoplan-manager
 npm run build
 openclaw gateway restart
 ```
@@ -161,7 +161,7 @@ nvm use 18  # 或更高
 ## 卸载
 
 ```bash
-rm -rf ~/.openclaw/plugins/lingcloud-ai-plan-manager
+rm -rf ~/.openclaw/plugins/gotoplan-manager
 # 编辑 openclaw.json 删除插件条目
 nano ~/.openclaw/openclaw.json
 openclaw gateway restart
@@ -171,5 +171,5 @@ openclaw gateway restart
 
 ## 获取帮助
 
-- **GitHub Issues**：[提交问题](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues)
+- **GitHub Issues**：[提交问题](https://github.com/feixuelingcloud/gotoplan-manager/issues)
 - **Email**：yemihu@lingcloud.ai

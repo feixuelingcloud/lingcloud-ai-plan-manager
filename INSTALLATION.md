@@ -35,7 +35,7 @@
 在 **OpenClaw 聊天界面**中输入：
 
 ```
-从 GitHub 安装插件：https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+从 GitHub 安装插件：https://github.com/feixuelingcloud/gotoplan-manager
 ```
 
 OpenClaw 会自动完成：
@@ -49,8 +49,8 @@ OpenClaw 会自动完成：
 
 > 如果聊天安装失败，也可以手动安装：
 > ```bash
-> git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-> cd lingcloud-ai-plan-manager
+> git clone https://github.com/feixuelingcloud/gotoplan-manager.git
+> cd gotoplan-manager
 > chmod +x install.sh && ./install.sh
 > ```
 
@@ -75,8 +75,8 @@ OpenClaw 会自动完成：
 打开 **PowerShell** 或 **命令提示符**：
 
 ```powershell
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
+git clone https://github.com/feixuelingcloud/gotoplan-manager.git
+cd gotoplan-manager
 ```
 
 **步骤 2**：运行安装脚本
@@ -88,7 +88,7 @@ powershell -ExecutionPolicy Bypass -File windows-install.ps1
 或直接右键 `windows-install.ps1` → **用 PowerShell 运行**
 
 脚本自动完成：
-- ✅ 将插件文件安装到 `%USERPROFILE%\.openclaw\plugins\lingcloud-ai-plan-manager\`
+- ✅ 将插件文件安装到 `%USERPROFILE%\.openclaw\plugins\gotoplan-manager\`
 - ✅ 运行 `npm install`，触发自动配置修复
 - ✅ 正确配置 `openclaw.json`（`plugins.load.paths`）
 - ✅ 重启 OpenClaw Gateway
@@ -99,18 +99,18 @@ powershell -ExecutionPolicy Bypass -File windows-install.ps1
 
 ```powershell
 # 1. 创建插件目录
-New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager"
 
 # 2. 下载并解压（PowerShell 5.1+）
-$url = "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/archive/refs/heads/main.zip"
+$url = "https://github.com/feixuelingcloud/gotoplan-manager/archive/refs/heads/main.zip"
 $tmp = "$env:TEMP\lingcloud-plugin.zip"
 Invoke-WebRequest -Uri $url -OutFile $tmp
 Expand-Archive -Path $tmp -DestinationPath "$env:TEMP\lingcloud-src" -Force
-Copy-Item "$env:TEMP\lingcloud-src\lingcloud-ai-plan-manager-main\*" `
-    "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager\" -Recurse -Force
+Copy-Item "$env:TEMP\lingcloud-src\gotoplan-manager-main\*" `
+    "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager\" -Recurse -Force
 
 # 3. 安装依赖（自动修复配置）
-cd "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
+cd "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager"
 npm install
 
 # 4. 重启 Gateway
@@ -131,7 +131,7 @@ openclaw gateway restart
       "paths": ["插件目录的绝对路径"]
     },
     "entries": {
-      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+      "@gotoplan/manager": {
         "enabled": true,
         "config": {
           "apiKey": "在这里填入你的 API Key",
@@ -145,7 +145,7 @@ openclaw gateway restart
 
 > macOS/Linux 聊天安装后，也可以直接在 OpenClaw 中说：
 > ```
-> 请配置 lingcloud-ai-plan-manager 的 API Key: YOUR_API_KEY_HERE
+> 请配置 gotoplan-manager 的 API Key: YOUR_API_KEY_HERE
 > ```
 
 保存后重启 OpenClaw。
@@ -187,7 +187,7 @@ openclaw gateway restart
 **解决**：
 
 ```bash
-cd ~/.openclaw/plugins/lingcloud-ai-plan-manager
+cd ~/.openclaw/plugins/gotoplan-manager
 npm run build
 openclaw gateway restart
 ```
@@ -204,7 +204,7 @@ curl https://plan.lingcloudai.com/api/health
 
 ### 获取帮助
 
-- **GitHub Issues**：[提交问题](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues)
+- **GitHub Issues**：[提交问题](https://github.com/feixuelingcloud/gotoplan-manager/issues)
 - **Email**：yemihu@lingcloud.ai
 
 ---
@@ -238,7 +238,7 @@ curl https://plan.lingcloudai.com/api/health
 In the **OpenClaw chat interface**, type:
 
 ```
-Install plugin from GitHub: https://github.com/feixuelingcloud/lingcloud-ai-plan-manager
+Install plugin from GitHub: https://github.com/feixuelingcloud/gotoplan-manager
 ```
 
 OpenClaw will automatically:
@@ -252,8 +252,8 @@ Configure your API Key when prompted. Done! 🎉
 
 > If chat install fails, use manual install:
 > ```bash
-> git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-> cd lingcloud-ai-plan-manager
+> git clone https://github.com/feixuelingcloud/gotoplan-manager.git
+> cd gotoplan-manager
 > chmod +x install.sh && ./install.sh
 > ```
 
@@ -276,8 +276,8 @@ Configure your API Key when prompted. Done! 🎉
 Open **PowerShell**:
 
 ```powershell
-git clone https://github.com/feixuelingcloud/lingcloud-ai-plan-manager.git
-cd lingcloud-ai-plan-manager
+git clone https://github.com/feixuelingcloud/gotoplan-manager.git
+cd gotoplan-manager
 powershell -ExecutionPolicy Bypass -File windows-install.ps1
 ```
 
@@ -287,16 +287,16 @@ Or right-click `windows-install.ps1` → **Run with PowerShell**
 
 ```powershell
 # Download and extract
-$url = "https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/archive/refs/heads/main.zip"
+$url = "https://github.com/feixuelingcloud/gotoplan-manager/archive/refs/heads/main.zip"
 $tmp = "$env:TEMP\lingcloud-plugin.zip"
 Invoke-WebRequest -Uri $url -OutFile $tmp
 Expand-Archive -Path $tmp -DestinationPath "$env:TEMP\lingcloud-src" -Force
-New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
-Copy-Item "$env:TEMP\lingcloud-src\lingcloud-ai-plan-manager-main\*" `
-    "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager\" -Recurse -Force
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager"
+Copy-Item "$env:TEMP\lingcloud-src\gotoplan-manager-main\*" `
+    "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager\" -Recurse -Force
 
 # Install dependencies (auto-fixes config)
-cd "$env:USERPROFILE\.openclaw\plugins\lingcloud-ai-plan-manager"
+cd "$env:USERPROFILE\.openclaw\plugins\gotoplan-manager"
 npm install
 
 # Restart Gateway
@@ -313,7 +313,7 @@ Edit `~/.openclaw/openclaw.json`:
 {
   "plugins": {
     "entries": {
-      "@feixuelingcloud/lingcloud-ai-plan-manager": {
+      "@gotoplan/manager": {
         "enabled": true,
         "config": {
           "apiKey": "your-api-key-here",
@@ -353,7 +353,7 @@ Run `fix-config.bat` (double-click) — it automatically fixes the config and re
 #### Plugin loads but tools unavailable
 
 ```bash
-cd ~/.openclaw/plugins/lingcloud-ai-plan-manager
+cd ~/.openclaw/plugins/gotoplan-manager
 npm run build
 openclaw gateway restart
 ```
@@ -362,7 +362,7 @@ openclaw gateway restart
 
 ### Get Help
 
-- **GitHub Issues**: [Submit an Issue](https://github.com/feixuelingcloud/lingcloud-ai-plan-manager/issues)
+- **GitHub Issues**: [Submit an Issue](https://github.com/feixuelingcloud/gotoplan-manager/issues)
 - **Email**: yemihu@lingcloud.ai
 
 <div align="center">
